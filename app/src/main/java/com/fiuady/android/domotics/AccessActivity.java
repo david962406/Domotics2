@@ -1,5 +1,4 @@
-package com.fiuady.android.login2;
-
+package com.fiuady.android.domotics;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 

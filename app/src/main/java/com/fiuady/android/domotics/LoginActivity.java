@@ -10,9 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.fiuady.android.login2.db.Inventory;
-import com.fiuady.android.login2.db.InventoryHelper;
-import com.fiuady.android.login2.db.Tables.Users;
+import com.fiuady.android.domotics.db.Inventory;
+import com.fiuady.android.domotics.db.InventoryHelper;
+import com.fiuady.android.domotics.db.Tables.Users;
 
 import java.util.List;
 public class LoginActivity extends AppCompatActivity {
@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 }
                 if(Access){
-                    Intent i = new Intent(LoginActivity.this, com.fiuady.android.login2.AccessActivity.class);
+                    Intent i = new Intent(LoginActivity.this, com.fiuady.android.domotics.AccessActivity.class);
                     startActivity(i);
                 }else {
                     Toast.makeText(LoginActivity.this, "Usuario y/o contraseña no coinciden", Toast.LENGTH_SHORT).show();

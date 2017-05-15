@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.fiuady.android.login2.db.Inventory;
+import com.fiuady.android.domotics.db.Inventory;
 
 public class SignInActivity extends AppCompatActivity {
     private Inventory inventory;
