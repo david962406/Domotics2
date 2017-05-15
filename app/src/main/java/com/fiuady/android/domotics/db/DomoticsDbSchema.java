@@ -10,7 +10,7 @@ public final class DomoticsDbSchema {
             public static final String ADMIN = "admin";
             public static final String USERNAME = "user_name";
             public static final String LAST_CONFIGURATION = "last_configuration";
-        }
+        }//
     }
 
     public static final class UserDataTable {
