@@ -25,7 +25,6 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //Holaar
         inventory=new Inventory (getApplicationContext());
         InventoryHelper.backupDatabaseFile(getApplicationContext());
 
