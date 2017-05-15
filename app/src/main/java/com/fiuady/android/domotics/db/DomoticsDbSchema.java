@@ -1,5 +1,5 @@
 package com.fiuady.android.domotics.db;
-//Rhrhhre
+
 public final class DomoticsDbSchema {
     public static final class UsersTable {
         public static final String NAME = "users";

@@ -17,7 +17,6 @@ import java.util.List;
 
 public final class Inventory {
 
-//ftgngfng
     class UserCursor extends CursorWrapper{
         public  UserCursor(Cursor cursor) {
             super(cursor);

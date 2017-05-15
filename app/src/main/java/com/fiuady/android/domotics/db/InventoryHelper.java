@@ -24,7 +24,7 @@ public final class InventoryHelper extends SQLiteOpenHelper {
     private  static final int SCHEMA_VERSION =1;
 
     private Context context;
-//fhsdfhfh
+
     public  InventoryHelper(Context context){
         super(context, DATABASE_NAME,null,SCHEMA_VERSION);
 
