@@ -1,4 +1,4 @@
-package com.fiuady.android.domotics;
+package com.fiuady.android.domotics.db.sensors;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
@@ -14,6 +14,8 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.fiuady.android.domotics.R;
 
 import java.util.ArrayList;
 import java.util.Set;
