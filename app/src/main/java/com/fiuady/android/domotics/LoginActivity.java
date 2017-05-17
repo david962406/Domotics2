@@ -8,13 +8,10 @@ import android.view.View.OnClickListener;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.fiuady.android.domotics.db.Inventory;
 import com.fiuady.android.domotics.db.InventoryHelper;
-import com.fiuady.android.domotics.db.Tables.Users;
 
-import java.util.List;
 public class LoginActivity extends AppCompatActivity {
 
     private Inventory inventory;
@@ -25,7 +22,7 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //Holaaaaaaaaaa
+        //Comente el codigo de entrada para que sea mas facil el acceso mientras programamos :)
         inventory=new Inventory (getApplicationContext());
         InventoryHelper.backupDatabaseFile(getApplicationContext());
 
@@ -39,7 +36,8 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String username = txtUserName.getText().toString();
+                //Codigo de inicio de sesión
+                /*final String username = txtUserName.getText().toString();
                 final String password = txtPassword.getText().toString();
                 List<Users> users = inventory.getAllUsers();
 
@@ -53,7 +51,9 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(i);
                 }else {
                     Toast.makeText(LoginActivity.this, "Usuario y/o contraseña no coinciden", Toast.LENGTH_SHORT).show();
-                }
+                }*/
+                Intent i = new Intent(LoginActivity.this, AccessActivity.class);
+                startActivity(i);
             }
         });
 
