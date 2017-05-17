@@ -29,7 +29,7 @@ public class AccessActivity extends AppCompatActivity {
         btnLed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AccessActivity.this, ledControl.class);
+                Intent intent = new Intent(AccessActivity.this, DeviceList.class);
                 startActivity(intent);
             }
         });

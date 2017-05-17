@@ -61,11 +61,10 @@ public final class Inventory {
     }
 
     public int getLastUserId(){
-        int id = -1;
-        UserCursor cursor = new UserCursor(db.rawQuery("SELECT MAX(u.id)+1 FROM users u;", null));
-        while (cursor.moveToNext()){
-            id = cursor.getInt(0);
-        }
+        Cursor cursor = db.rawQuery("SELECT MAX(u.id)+1 FROM users u;", null);
+        cursor.moveToFirst();
+        int id = cursor.getInt(0);
+        cursor.close();
         return id;
     }
 
