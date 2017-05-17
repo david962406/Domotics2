@@ -55,16 +55,14 @@ public final class Inventory {
         return list;
     }
 
-    /*public void insertUser(int Id, String FN, String LN, String UN, String Password, String email) {
-        int newID = Id + 1;
-        String query = "INSERT INTO accounts (id, first_name, last_name, username, password, e_mail) " +
-                "VALUES("+String.valueOf(newID)+", '"+FN+"', '"+LN+"','"+UN+"','"+Password+"', '"+ email+"');";
-        db.execSQL(query);
-    }*/
+    public void newUser (int id, String firstName, String lastName, String userName, String password) {
+        db.execSQL("INSERT INTO users  (id, password, admin, user_name, last_configuration) VALUES (" + id + ", '" + password + "', 0, '" + userName + "', NULL);");
+        db.execSQL("INSERT INTO user_data  (user_id, first_name, last_name) VALUES (" + id + ", '" + firstName + "', '" + lastName + "');");
+    }
 
     public int getLastUserId(){
         int id = -1;
-        UserCursor cursor = new UserCursor(db.rawQuery("SELECT MAX(u.id) From users u;", null));
+        UserCursor cursor = new UserCursor(db.rawQuery("SELECT MAX(u.id)+1 FROM users u;", null));
         while (cursor.moveToNext()){
             id = cursor.getInt(0);
         }
