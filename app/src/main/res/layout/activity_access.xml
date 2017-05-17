@@ -6,4 +6,31 @@
     android:layout_height="match_parent"
     tools:context="com.fiuady.android.domotics.AccessActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Registro de usuario nuevo"
+            android:id="@+id/btnNewUser"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Control de iluminación"
+            android:id="@+id/btnLed"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Control RGB"
+            android:id="@+id/btnLedRGB"/>
+
+    </LinearLayout>
+
+
+
 </android.support.constraint.ConstraintLayout>

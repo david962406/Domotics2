@@ -3,6 +3,10 @@
     package="com.fiuady.android.domotics">
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -25,7 +29,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".AccessActivity" />
-        <activity android:name=".SignInActivity"></activity>
+        <activity android:name=".SignInActivity" />
+        <activity
+            android:name=".db.sensors.DeviceList"
+            android:label="@string/title_activity_device_list"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".db.sensors.ledControl" />
+        <activity android:name=".db.sensors.RGBActivity"></activity>
     </application>
 
 </manifest>
