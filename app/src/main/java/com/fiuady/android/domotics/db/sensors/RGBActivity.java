@@ -15,6 +15,10 @@ import com.flask.colorpicker.builder.ColorPickerClickListener;
 import com.flask.colorpicker.builder.ColorPickerDialogBuilder;
 
 public class RGBActivity extends AppCompatActivity {
+    private void sendColor(int r, int g, int b) {
+      //aqui se envian datos al bluetooth
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +35,7 @@ public class RGBActivity extends AppCompatActivity {
                         .with(RGBActivity.this)
                         .setTitle("Choose RGB color")
                         .initialColor(Color.WHITE)
-                        .wheelType(ColorPickerView.WHEEL_TYPE.FLOWER)
+                        .wheelType(ColorPickerView.WHEEL_TYPE.CIRCLE)
                         .lightnessSliderOnly()
                         .density(12)
                         .setOnColorSelectedListener(new OnColorSelectedListener() {
@@ -47,7 +51,7 @@ public class RGBActivity extends AppCompatActivity {
                                 int g = (selectedColor >> 8) & 0xFF;
                                 int b = (selectedColor >> 0) & 0xFF;
                                 Log.d("RGB", "R [" + r + "] - G [" + g + "] - B [" + b + "]");
-                                //sendColor(r,g,b);
+                                sendColor(r,g,b);
                             }
                         })
                         .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
