@@ -23,6 +23,12 @@
             android:text="Control de iluminación"
             android:id="@+id/btnLed"/>
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Control RGB"
+            android:id="@+id/btnLedRGB"/>
+
     </LinearLayout>
 
 

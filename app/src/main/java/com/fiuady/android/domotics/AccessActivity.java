@@ -6,11 +6,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.fiuady.android.domotics.db.sensors.DeviceList;
+import com.fiuady.android.domotics.db.sensors.RGBActivity;
+
 public class AccessActivity extends AppCompatActivity {
 
     Button btnNewUser;
     Button btnLed;
 
+    Button btnLedRGB;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +34,14 @@ public class AccessActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AccessActivity.this, DeviceList.class);
+                startActivity(intent);
+            }
+        });
+        btnLedRGB = (Button)findViewById(R.id.btnLedRGB);
+        btnLedRGB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AccessActivity.this, RGBActivity.class);
                 startActivity(intent);
             }
         });

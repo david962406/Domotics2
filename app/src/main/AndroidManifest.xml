@@ -31,10 +31,11 @@
         <activity android:name=".AccessActivity" />
         <activity android:name=".SignInActivity" />
         <activity
-            android:name=".DeviceList"
+            android:name=".db.sensors.DeviceList"
             android:label="@string/title_activity_device_list"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ledControl"></activity>
+        <activity android:name=".db.sensors.ledControl" />
+        <activity android:name=".db.sensors.RGBActivity"></activity>
     </application>
 
 </manifest>
