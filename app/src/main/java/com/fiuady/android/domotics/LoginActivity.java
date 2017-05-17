@@ -25,6 +25,7 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //Holaaaaaaaaaa
         inventory=new Inventory (getApplicationContext());
         InventoryHelper.backupDatabaseFile(getApplicationContext());
 
