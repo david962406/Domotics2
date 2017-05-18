@@ -10,7 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,7 +25,7 @@ import java.util.Set;
 public class DeviceList extends ActionBarActivity
 {
     //Declaramos Los Componentes
-    Button btnVinculados;
+    ImageButton btnVinculados;
     ListView listaDispositivos;
     //Bluetooth
     private BluetoothAdapter myBluetooth = null;
@@ -39,7 +39,7 @@ public class DeviceList extends ActionBarActivity
         setContentView(R.layout.activity_device_list);
 
         //Declaramos nuestros componenetes ralcionandolos con los del layout
-        btnVinculados = (Button)findViewById(R.id.button);
+        btnVinculados = (ImageButton) findViewById(R.id.button);
         listaDispositivos = (ListView)findViewById(R.id.listView);
 
         //Comprobamos que el dispositivo tiene bluetooth
