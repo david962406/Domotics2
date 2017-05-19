@@ -37,7 +37,6 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".db.sensors.ledControl" />
         <activity android:name=".db.sensors.RGBActivity"></activity>
-        <activity android:name=".BluetoothConectionActivity"></activity>
         <activity android:name=".db.sensors.DataSensorsActivity"></activity>
     </application>
 
