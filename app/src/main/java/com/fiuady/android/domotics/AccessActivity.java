@@ -181,6 +181,20 @@ public class AccessActivity extends FragmentActivity {
     }
 
     public String getDataTempSensor () {
+        if (btSocket!=null)
+        {
+            try
+            {
+                btSocket.getOutputStream().write("UPDATEtemperature".toString().getBytes());
+                btSocket.getOutputStream().flush();
+                btSocket.getOutputStream().write(":".toString().getBytes());
+
+            }
+            catch (IOException e)
+            {
+                // msg("Error");
+            }
+        }
         return tempData;
     }
     public void turnOffLed()
@@ -190,6 +204,10 @@ public class AccessActivity extends FragmentActivity {
             try
             {
                 btSocket.getOutputStream().write("TF".toString().getBytes());
+                btSocket.getOutputStream().flush();
+                btSocket.getOutputStream().write(":".toString().getBytes());
+
+
             }
             catch (IOException e)
             {
@@ -205,6 +223,10 @@ public class AccessActivity extends FragmentActivity {
             try
             {
                 btSocket.getOutputStream().write("TO".toString().getBytes());
+                btSocket.getOutputStream().flush();
+                btSocket.getOutputStream().write(":".toString().getBytes());
+
+
             }
             catch (IOException e)
             {
