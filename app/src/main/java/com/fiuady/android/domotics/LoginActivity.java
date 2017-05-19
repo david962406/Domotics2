@@ -11,6 +11,7 @@ import android.widget.EditText;
 
 import com.fiuady.android.domotics.db.Inventory;
 import com.fiuady.android.domotics.db.InventoryHelper;
+import com.fiuady.android.domotics.db.sensors.DeviceList;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -52,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
                 }else {
                     Toast.makeText(LoginActivity.this, "Usuario y/o contraseña no coinciden", Toast.LENGTH_SHORT).show();
                 }*/
-                Intent i = new Intent(LoginActivity.this, AccessActivity.class);
+                Intent i = new Intent(LoginActivity.this, DeviceList.class);
                 startActivity(i);
             }
         });
