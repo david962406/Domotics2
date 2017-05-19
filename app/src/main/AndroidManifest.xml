@@ -11,6 +11,7 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <service android:name=".BluetoothDataService"/>
 
     <application
         android:allowBackup="true"
@@ -36,6 +37,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".db.sensors.ledControl" />
         <activity android:name=".db.sensors.RGBActivity"></activity>
+        <activity android:name=".BluetoothConectionActivity"></activity>
+        <activity android:name=".db.sensors.DataSensorsActivity"></activity>
     </application>
 
 </manifest>
