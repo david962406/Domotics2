@@ -25,7 +25,6 @@ CREATE TABLE [configuration](
     [device_id] INTEGER NOT NULL REFERENCES device([id]));
 
 CREATE TABLE [device_configuration](
-    [id] INTEGER PRIMARY KEY NOT NULL,
     [device_id] INTEGER NOT NULL REFERENCES device([id]),
     [sensor_active] BOOLEAN,
     [data] INTEGER,

@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.fiuady.android.domotics.db.sensors.DataSensorsActivity;
-import com.fiuady.android.domotics.db.sensors.DeviceList;
 import com.fiuady.android.domotics.db.sensors.ledcontrol2;
 import com.fiuady.android.domotics.db.sensors.prueba;
 
@@ -45,9 +44,10 @@ public class AccessActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_access);
 
+        //Aqui pondrán la dirección del modulo bluetooth que estan usando,
+        //La pueden obtener mediante la clase devicelist
+        address = "98:D3:31:50:31:4A";
 
-        Intent newint = getIntent();
-        address = newint.getStringExtra(DeviceList.EXTRA_ADDRESS); //recivimos la mac address obtenida en la actividad anterior
         new ConnectBT().execute(); //Call the class to connect
 
         btnNewUser = (Button)findViewById(R.id.btnNewUser);
@@ -225,7 +225,6 @@ public class AccessActivity extends FragmentActivity {
                 btSocket.getOutputStream().write("TO".toString().getBytes());
                 btSocket.getOutputStream().flush();
                 btSocket.getOutputStream().write(":".toString().getBytes());
-
 
             }
             catch (IOException e)
