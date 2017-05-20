@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.fiuady.android.domotics.db.sensors.DataSensorsActivity;
 import com.fiuady.android.domotics.db.sensors.DeviceList;
+import com.fiuady.android.domotics.db.sensors.ledcontrol2;
 import com.fiuady.android.domotics.db.sensors.prueba;
 
 import java.io.BufferedReader;
@@ -36,6 +37,7 @@ public class AccessActivity extends FragmentActivity {
     private boolean isBtConnected = false;
     static final UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     final prueba fragment1 = new prueba();
+    final ledcontrol2 fragment2 = new ledcontrol2();
     String tempData;
 
     @Override
@@ -61,8 +63,13 @@ public class AccessActivity extends FragmentActivity {
         btnLed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AccessActivity.this, DeviceList.class);
-                startActivity(intent);
+                //Intent intent = new Intent(AccessActivity.this, DeviceList.class);
+                //startActivity(intent);
+                android.app.FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+
+                transaction.add(R.id.contenedor, fragment2);
+                transaction.commit();
             }
         });
 
@@ -174,7 +181,58 @@ public class AccessActivity extends FragmentActivity {
     }
 
     public String getDataTempSensor () {
+        if (btSocket!=null)
+        {
+            try
+            {
+                btSocket.getOutputStream().write("UPDATEtemperature".toString().getBytes());
+                btSocket.getOutputStream().flush();
+                btSocket.getOutputStream().write(":".toString().getBytes());
+
+            }
+            catch (IOException e)
+            {
+                // msg("Error");
+            }
+        }
         return tempData;
+    }
+    public void turnOffLed()
+    {
+        if (btSocket!=null)
+        {
+            try
+            {
+                btSocket.getOutputStream().write("TF".toString().getBytes());
+                btSocket.getOutputStream().flush();
+                btSocket.getOutputStream().write(":".toString().getBytes());
+
+
+            }
+            catch (IOException e)
+            {
+               // msg("Error");
+            }
+        }
+    }
+
+    public void turnOnLed()
+    {
+        if (btSocket!=null)
+        {
+            try
+            {
+                btSocket.getOutputStream().write("TO".toString().getBytes());
+                btSocket.getOutputStream().flush();
+                btSocket.getOutputStream().write(":".toString().getBytes());
+
+
+            }
+            catch (IOException e)
+            {
+                //msg("Error");
+            }
+        }
     }
 
 }
