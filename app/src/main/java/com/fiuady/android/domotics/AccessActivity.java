@@ -13,7 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.fiuady.android.domotics.db.sensors.DataSensorsActivity;
+
 import com.fiuady.android.domotics.db.sensors.ledcontrol2;
 import com.fiuady.android.domotics.db.sensors.prueba;
 
@@ -26,7 +26,6 @@ public class AccessActivity extends FragmentActivity {
 
     Button btnNewUser;
     Button btnLed;
-    Button btnBluetoothConection;
     Button btnDataSensor;
 
     private ProgressDialog progress;
@@ -68,17 +67,8 @@ public class AccessActivity extends FragmentActivity {
                 android.app.FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
 
-                transaction.add(R.id.contenedor, fragment2);
+                transaction.replace(R.id.contenedor, fragment2);
                 transaction.commit();
-            }
-        });
-
-        btnBluetoothConection = (Button)findViewById(R.id.btnBtConection);
-        btnBluetoothConection.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(AccessActivity.this, DataSensorsActivity.class);
-                startActivity(intent);
             }
         });
 
@@ -89,7 +79,7 @@ public class AccessActivity extends FragmentActivity {
                 android.app.FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
 
-                transaction.add(R.id.contenedor, fragment1);
+                transaction.replace(R.id.contenedor, fragment1);
                 transaction.commit();
             }
         });
@@ -216,6 +206,17 @@ public class AccessActivity extends FragmentActivity {
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        try {
+            btSocket.close();
+        }
+        catch (Exception e) {
+
+        }
+    }
+
     public void turnOnLed()
     {
         if (btSocket!=null)
@@ -232,6 +233,8 @@ public class AccessActivity extends FragmentActivity {
                 //msg("Error");
             }
         }
+
+
     }
 
 }
