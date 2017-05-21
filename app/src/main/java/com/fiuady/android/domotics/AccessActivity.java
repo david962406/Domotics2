@@ -23,7 +23,7 @@ import java.io.InputStreamReader;
 import java.util.UUID;
 
 public class AccessActivity extends FragmentActivity {
-
+//
     Button btnNewUser;
     Button btnLed;
     Button btnDataSensor;
