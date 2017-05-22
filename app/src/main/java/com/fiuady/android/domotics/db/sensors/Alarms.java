@@ -26,6 +26,9 @@ public class Alarms extends android.app.Fragment {
     Switch SW4;
     Switch SW5;
 
+    Button Save;
+    Button Cancel;
+
     boolean isGlobalAlarmChecked;
     boolean isSWPIRChecked;
     boolean isSW1Checked;
@@ -53,6 +56,23 @@ public class Alarms extends android.app.Fragment {
         SW3 = (Switch)view.findViewById(R.id.sw_SW3);
         SW4 = (Switch)view.findViewById(R.id.sw_SW4);
         SW5 = (Switch)view.findViewById(R.id.sw_SW5);
+
+        Save = (Button)view.findViewById(R.id.btn_SaveConf);
+        Cancel = (Button)view.findViewById(R.id.btn_CancelConf);
+
+        Save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Enviar los Strings para los casos al arduino
+                activity.AlarmActivatePIR(isSWPIRChecked);
+                activity.AlarmActivateSW1(isSW1Checked);
+                activity.AlarmActivateSW2(isSW2Checked);
+                activity.AlarmActivateSW3(isSW3Checked);
+                activity.AlarmActivateSW4(isSW4Checked);
+                activity.AlarmActivateSW5(isSW5Checked);
+            }
+        });
+
 
         GlobalAlarm.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

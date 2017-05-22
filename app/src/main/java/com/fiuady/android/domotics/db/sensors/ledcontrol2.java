@@ -32,7 +32,7 @@ public class ledcontrol2 extends Fragment {
        // dataTemp = (TextView)view.findViewById(R.id.tempSensor);
         final AccessActivity activity = (AccessActivity)getActivity();
         //dataTemp.setText(activity.getDataTempSensor());
-       on = (Button)view.findViewById(R.id.button2);
+        on = (Button)view.findViewById(R.id.button2);
         off = (Button)view.findViewById(R.id.button3);
         lumcontrol=(SeekBar)view.findViewById(R.id.seekBar);
         on.setOnClickListener(new View.OnClickListener() {
