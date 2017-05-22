@@ -1,12 +1,14 @@
 package com.fiuady.android.domotics.db.sensors;
 
 import android.content.DialogInterface;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 
 import com.fiuady.android.domotics.R;
 import com.flask.colorpicker.ColorPickerView;
@@ -15,8 +17,15 @@ import com.flask.colorpicker.builder.ColorPickerClickListener;
 import com.flask.colorpicker.builder.ColorPickerDialogBuilder;
 
 public class RGBActivity extends AppCompatActivity {
+    ImageButton lampara1;
     private void sendColor(int r, int g, int b) {
       //aqui se envian datos al bluetooth
+
+
+        Log.d("RGB", "color en hexadecimal"+ lampara1.getColorFilter()+"el que no es filtro");
+
+        ColorStateList csl = new ColorStateList(new int[][]{{}}, new int[]{Color.rgb(r,g,b)});
+        lampara1.setBackgroundTintList(csl);
 
     }
 
@@ -26,6 +35,9 @@ public class RGBActivity extends AppCompatActivity {
         setContentView(R.layout.activity_rgb);
 
 
+         lampara1=(ImageButton)findViewById(R.id.lampbutton) ;
+
+        //lampara1.setBackgroundColor(Color.BLACK);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
