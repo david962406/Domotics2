@@ -40,6 +40,11 @@
             android:layout_height="wrap_content"
             android:text="Información de los sensores"
             android:id="@+id/dataSensors"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alarmas"
+            android:id="@+id/btnAlarms"/>
 
         <FrameLayout
             android:id="@+id/contenedor"
