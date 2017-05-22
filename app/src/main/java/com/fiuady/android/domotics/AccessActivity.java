@@ -38,7 +38,7 @@ public class AccessActivity extends FragmentActivity {
     static final UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     final prueba fragment1 = new prueba();
     final ledcontrol2 fragment2 = new ledcontrol2();
-    //final Alarms fragment3 = new Alarms();
+    final Alarms fragment3 = new Alarms();
     String tempData;
 
     @Override
@@ -94,8 +94,8 @@ public class AccessActivity extends FragmentActivity {
             public void onClick(View v) {
                 android.app.FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
-                //transaction.replace(R.id.contenedor, fragment3);
-                //transaction.commit();
+                transaction.replace(R.id.contenedor, fragment3);
+                transaction.commit();
             }
         });
     }

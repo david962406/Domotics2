@@ -16,7 +16,7 @@ import android.widget.TextView;
 import com.fiuady.android.domotics.AccessActivity;
 import com.fiuady.android.domotics.R;
 
-public class Alarms extends Fragment {
+public class Alarms extends android.app.Fragment {
     TextView dataPIR;
     Switch GlobalAlarm;
     Switch SWPIR;
