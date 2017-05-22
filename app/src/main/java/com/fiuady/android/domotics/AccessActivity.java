@@ -13,7 +13,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-
+import com.fiuady.android.domotics.db.sensors.DataSensorsActivity;
+import com.fiuady.android.domotics.db.sensors.DeviceList;
 import com.fiuady.android.domotics.db.sensors.ledcontrol2;
 import com.fiuady.android.domotics.db.sensors.prueba;
 
@@ -23,9 +24,10 @@ import java.io.InputStreamReader;
 import java.util.UUID;
 
 public class AccessActivity extends FragmentActivity {
-//
+
     Button btnNewUser;
     Button btnLed;
+    Button btnBluetoothConection;
     Button btnDataSensor;
 
     private ProgressDialog progress;
@@ -43,10 +45,9 @@ public class AccessActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_access);
 
-        //Aqui pondrán la dirección del modulo bluetooth que estan usando,
-        //La pueden obtener mediante la clase devicelist
-        address = "98:D3:31:50:31:4A";
 
+        Intent newint = getIntent();
+        address = newint.getStringExtra(DeviceList.EXTRA_ADDRESS); //recivimos la mac address obtenida en la actividad anterior
         new ConnectBT().execute(); //Call the class to connect
 
         btnNewUser = (Button)findViewById(R.id.btnNewUser);
@@ -67,8 +68,17 @@ public class AccessActivity extends FragmentActivity {
                 android.app.FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
 
-                transaction.replace(R.id.contenedor, fragment2);
+                transaction.add(R.id.contenedor, fragment2);
                 transaction.commit();
+            }
+        });
+
+        btnBluetoothConection = (Button)findViewById(R.id.btnBtConection);
+        btnBluetoothConection.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AccessActivity.this, DataSensorsActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -79,7 +89,7 @@ public class AccessActivity extends FragmentActivity {
                 android.app.FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
 
-                transaction.replace(R.id.contenedor, fragment1);
+                transaction.add(R.id.contenedor, fragment1);
                 transaction.commit();
             }
         });
@@ -206,17 +216,6 @@ public class AccessActivity extends FragmentActivity {
         }
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        try {
-            btSocket.close();
-        }
-        catch (Exception e) {
-
-        }
-    }
-
     public void turnOnLed()
     {
         if (btSocket!=null)
@@ -227,14 +226,13 @@ public class AccessActivity extends FragmentActivity {
                 btSocket.getOutputStream().flush();
                 btSocket.getOutputStream().write(":".toString().getBytes());
 
+
             }
             catch (IOException e)
             {
                 //msg("Error");
             }
         }
-
-
     }
 
 }
