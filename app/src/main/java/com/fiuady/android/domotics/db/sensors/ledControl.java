@@ -46,7 +46,7 @@ public class ledControl extends ActionBarActivity {
 
         btnOn = (ImageButton) findViewById(R.id.button2);
         btnOff = (ImageButton)findViewById(R.id.button3);
-        btnDis = (ImageButton)findViewById(R.id.button4);
+       // btnDis = (ImageButton)findViewById(R.id.button4);
         brightness = (SeekBar)findViewById(R.id.seekBar);
         lumn = (TextView)findViewById(R.id.lumn);
 
