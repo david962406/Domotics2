@@ -255,9 +255,11 @@ public class AccessActivity extends FragmentActivity {
 
         try
         {
-            btSocket.getOutputStream().write("LUM".getBytes());
+            String value2;
+            value2="LUM"+value;
+            btSocket.getOutputStream().write(value2.getBytes());
 
-            btSocket.getOutputStream().write(value.getBytes());
+
         }
         catch (IOException e)
         {

@@ -1,22 +1,20 @@
 package com.fiuady.android.domotics.db.sensors;
 
-import android.os.Bundle;
-
-import android.support.v7.app.ActionBarActivity;
-import android.view.Menu;
-import android.view.MenuItem;
-
-import android.bluetooth.BluetoothSocket;
-import android.content.Intent;
-import android.view.View;
-import android.widget.Button;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import android.widget.Toast;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothSocket;
+import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.fiuady.android.domotics.R;
 
@@ -26,7 +24,7 @@ import java.util.UUID;
 
 public class ledControl extends ActionBarActivity {
 
-    Button btnOn, btnOff, btnDis;
+    ImageButton btnOn, btnOff, btnDis;
     SeekBar brightness;
     TextView lumn;
     String address = null;
@@ -46,9 +44,9 @@ public class ledControl extends ActionBarActivity {
 
         setContentView(R.layout.activity_led_control);
 
-        btnOn = (Button)findViewById(R.id.button2);
-        btnOff = (Button)findViewById(R.id.button3);
-        btnDis = (Button)findViewById(R.id.button4);
+        btnOn = (ImageButton) findViewById(R.id.button2);
+        btnOff = (ImageButton)findViewById(R.id.button3);
+        btnDis = (ImageButton)findViewById(R.id.button4);
         brightness = (SeekBar)findViewById(R.id.seekBar);
         lumn = (TextView)findViewById(R.id.lumn);
 
