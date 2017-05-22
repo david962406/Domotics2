@@ -14,7 +14,8 @@
     <ScrollView
         android:id="@+id/login_form"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal">
 
         <LinearLayout
             android:id="@+id/email_login_form"
@@ -28,7 +29,7 @@
                 android:layout_height="260dp"
                 android:layout_gravity="center"
 
-                android:background="@drawable/ic_person_black_24dp"
+                android:background="@drawable/user"
                 android:layout_weight="1.62" />
 
             <android.support.design.widget.TextInputLayout
@@ -60,23 +61,45 @@
 
             </android.support.design.widget.TextInputLayout>
 
-            <Button
-                android:layout_gravity="center"
-                android:id="@+id/btn_login"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Iniciar sesión"
-                android:textStyle="bold"/>
-            <Button
-                android:layout_gravity="center"
-                android:id="@+id/btn_SignIn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Crear Cuenta"
-                android:textStyle="bold"/>
+                android:orientation="horizontal"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="@dimen/smallbtn_margin"
+                    android:layout_height="@dimen/smallbtn_margin"
+                    android:background="@drawable/login"/>
+                <Button
+                    android:id="@+id/btn_login"
+                    android:text="Iniciar sesión"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:textStyle="bold"
+                    android:textColor="#ffffff"/>
 
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="@dimen/smallbtn_margin"
+                    android:layout_height="@dimen/smallbtn_margin"
+                    android:background="@drawable/signin"/>
+
+                <Button
+                    android:id="@+id/btn_SignIn"
+                    android:text="Crear Cuenta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:textStyle="bold"
+                    android:textColor="#ffffff"/>
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
