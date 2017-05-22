@@ -5,12 +5,13 @@ import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,7 +26,7 @@ import java.util.Set;
 public class DeviceList extends ActionBarActivity
 {
     //Declaramos Los Componentes
-    ImageButton btnVinculados;
+    Button btnVinculados;
     ListView listaDispositivos;
     //Bluetooth
     private BluetoothAdapter myBluetooth = null;
@@ -39,7 +40,7 @@ public class DeviceList extends ActionBarActivity
         setContentView(R.layout.activity_device_list);
 
         //Declaramos nuestros componenetes ralcionandolos con los del layout
-        btnVinculados = (ImageButton) findViewById(R.id.button);
+        btnVinculados = (Button)findViewById(R.id.button);
         listaDispositivos = (ListView)findViewById(R.id.listView);
 
         //Comprobamos que el dispositivo tiene bluetooth
@@ -80,6 +81,7 @@ public class DeviceList extends ActionBarActivity
             for(BluetoothDevice bt : dispVinculados)
             {
                 list.add(bt.getName() + "\n" + bt.getAddress()); //Obtenemos los nombres y direcciones MAC de los disp. vinculados
+
             }
         }
         else
@@ -106,7 +108,8 @@ public class DeviceList extends ActionBarActivity
 
             //Change the activity.
             i.putExtra(EXTRA_ADDRESS, address); //this will be received at ledControl (class) Activity
-            startActivity(i);
+            Log.d("bluetooth",address);
+            //startActivity(i);
         }
     };
 
