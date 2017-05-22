@@ -9,11 +9,12 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
-
+import com.fiuady.android.domotics.db.sensors.Alarms;
 import com.fiuady.android.domotics.db.sensors.ledcontrol2;
 import com.fiuady.android.domotics.db.sensors.prueba;
 
@@ -23,10 +24,11 @@ import java.io.InputStreamReader;
 import java.util.UUID;
 
 public class AccessActivity extends FragmentActivity {
-
-    Button btnNewUser;
-    Button btnLed;
-    Button btnDataSensor;
+//
+    ImageButton btnNewUser;
+    ImageButton btnLed;
+    ImageButton btnDataSensor;
+    ImageButton btnAlarm;
 
     private ProgressDialog progress;
     String address = null;
@@ -36,6 +38,7 @@ public class AccessActivity extends FragmentActivity {
     static final UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     final prueba fragment1 = new prueba();
     final ledcontrol2 fragment2 = new ledcontrol2();
+    final Alarms fragment3 = new Alarms();
     String tempData;
 
     @Override
@@ -45,11 +48,11 @@ public class AccessActivity extends FragmentActivity {
 
         //Aqui pondrán la dirección del modulo bluetooth que estan usando,
         //La pueden obtener mediante la clase devicelist
-        address = "98:D3:31:50:31:4A";
+        address = "20:17:01:03:42:80";
 
         new ConnectBT().execute(); //Call the class to connect
 
-        btnNewUser = (Button)findViewById(R.id.btnNewUser);
+        btnNewUser = (ImageButton)findViewById(R.id.btnNewUser);
         btnNewUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,7 +61,7 @@ public class AccessActivity extends FragmentActivity {
             }
         });
 
-        btnLed = (Button)findViewById(R.id.btnLed);
+        btnLed = (ImageButton) findViewById(R.id.btnLed);
         btnLed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,7 +75,7 @@ public class AccessActivity extends FragmentActivity {
             }
         });
 
-        btnDataSensor = (Button)findViewById(R.id.dataSensors);
+        btnDataSensor = (ImageButton) findViewById(R.id.dataSensors);
         btnDataSensor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,6 +83,17 @@ public class AccessActivity extends FragmentActivity {
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
 
                 transaction.replace(R.id.contenedor, fragment1);
+                transaction.commit();
+            }
+        });
+
+        btnAlarm = (ImageButton) findViewById(R.id.btnAlarms);
+        btnAlarm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                android.app.FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.contenedor, fragment3);
                 transaction.commit();
             }
         });
@@ -177,7 +191,6 @@ public class AccessActivity extends FragmentActivity {
             {
                 btSocket.getOutputStream().write("UPDATEtemperature".toString().getBytes());
                 btSocket.getOutputStream().flush();
-                btSocket.getOutputStream().write(":".toString().getBytes());
 
             }
             catch (IOException e)
@@ -195,7 +208,7 @@ public class AccessActivity extends FragmentActivity {
             {
                 btSocket.getOutputStream().write("TF".toString().getBytes());
                 btSocket.getOutputStream().flush();
-                btSocket.getOutputStream().write(":".toString().getBytes());
+
 
 
             }
@@ -224,8 +237,9 @@ public class AccessActivity extends FragmentActivity {
             try
             {
                 btSocket.getOutputStream().write("TO".toString().getBytes());
+                Log.d("dd","TO".toString().getBytes().toString());
                 btSocket.getOutputStream().flush();
-                btSocket.getOutputStream().write(":".toString().getBytes());
+
 
             }
             catch (IOException e)
@@ -236,5 +250,22 @@ public class AccessActivity extends FragmentActivity {
 
 
     }
+    public void lumchange(String value)
+    {
+
+        try
+        {
+            btSocket.getOutputStream().write("LUM".getBytes());
+
+            btSocket.getOutputStream().write(value.getBytes());
+        }
+        catch (IOException e)
+        {
+
+        }
+
+
+    }
+
 
 }

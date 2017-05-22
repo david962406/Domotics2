@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.fiuady.android.domotics.AccessActivity;
@@ -20,6 +21,7 @@ public class ledcontrol2 extends Fragment {
     private TextView dataTemp;
     private Button on;
     private Button off;
+    private SeekBar lumcontrol;
     public ledcontrol2() {
 
     }
@@ -32,6 +34,7 @@ public class ledcontrol2 extends Fragment {
         //dataTemp.setText(activity.getDataTempSensor());
        on = (Button)view.findViewById(R.id.button2);
         off = (Button)view.findViewById(R.id.button3);
+        lumcontrol=(SeekBar)view.findViewById(R.id.seekBar);
         on.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,6 +45,28 @@ public class ledcontrol2 extends Fragment {
             @Override
             public void onClick(View v) {
                 activity.turnOffLed();
+            }
+        });
+        lumcontrol.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                if (fromUser==true)
+                {
+                    activity.lumchange(String.valueOf(progress));
+                }
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                activity.lumchange(String.valueOf(seekBar.getProgress()));
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                activity.lumchange(String.valueOf(seekBar.getProgress()));
+
             }
         });
        // btnUpDate.setOnClickListener(new View.OnClickListener() {
