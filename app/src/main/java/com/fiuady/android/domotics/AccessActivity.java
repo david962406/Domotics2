@@ -15,6 +15,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.fiuady.android.domotics.db.sensors.Alarms;
+import com.fiuady.android.domotics.db.sensors.DoorActivity;
 import com.fiuady.android.domotics.db.sensors.ledcontrol2;
 import com.fiuady.android.domotics.db.sensors.prueba;
 
@@ -29,6 +30,7 @@ public class AccessActivity extends FragmentActivity {
     ImageButton btnLed;
     ImageButton btnDataSensor;
     ImageButton btnAlarm;
+    ImageButton btnDoor;
 
     private ProgressDialog progress;
     String address = null;
@@ -39,6 +41,7 @@ public class AccessActivity extends FragmentActivity {
     final prueba fragment1 = new prueba();
     final ledcontrol2 fragment2 = new ledcontrol2();
     final Alarms fragment3 = new Alarms();
+    final DoorActivity fragment4 = new DoorActivity();
     String tempData;
 
     @Override
@@ -95,6 +98,17 @@ public class AccessActivity extends FragmentActivity {
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
                 transaction.replace(R.id.contenedor, fragment3);
                 transaction.commit();
+            }
+        });
+        btnDoor=(ImageButton) findViewById(R.id.btnDoor);
+        btnDoor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                android.app.FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.contenedor, fragment4);
+                transaction.commit();
+
             }
         });
     }
@@ -250,14 +264,96 @@ public class AccessActivity extends FragmentActivity {
 
 
     }
+    public void Opendoor1()
+    {
+        if (btSocket!=null)
+        {
+            try
+            {
+                btSocket.getOutputStream().write("OPENDOOR1".toString().getBytes());
+                Log.d("dd","TO".toString().getBytes().toString());
+                btSocket.getOutputStream().flush();
+
+
+            }
+            catch (IOException e)
+            {
+                //msg("Error");
+            }
+        }
+
+
+    }
+    public void Closedoor1()
+    {
+        if (btSocket!=null)
+        {
+            try
+            {
+                btSocket.getOutputStream().write("CLOSEDOOR1".toString().getBytes());
+                Log.d("dd","TO".toString().getBytes().toString());
+                btSocket.getOutputStream().flush();
+
+
+            }
+            catch (IOException e)
+            {
+                //msg("Error");
+            }
+        }
+
+
+    }
+    public void Opendoor2()
+    {
+        if (btSocket!=null)
+        {
+            try
+            {
+                btSocket.getOutputStream().write("OPENDOOR2".toString().getBytes());
+                Log.d("dd","TO".toString().getBytes().toString());
+                btSocket.getOutputStream().flush();
+
+
+            }
+            catch (IOException e)
+            {
+                //msg("Error");
+            }
+        }
+
+
+    }
+    public void Closedoor2()
+    {
+        if (btSocket!=null)
+        {
+            try
+            {
+                btSocket.getOutputStream().write("CLOSEDOOR2".toString().getBytes());
+                Log.d("dd","TO".toString().getBytes().toString());
+                btSocket.getOutputStream().flush();
+
+
+            }
+            catch (IOException e)
+            {
+                //msg("Error");
+            }
+        }
+
+
+    }
     public void lumchange(String value)
     {
 
         try
         {
-            btSocket.getOutputStream().write("LUM".getBytes());
+            String value2;
+            value2="LUM"+value;
+            btSocket.getOutputStream().write(value2.getBytes());
 
-            btSocket.getOutputStream().write(value.getBytes());
+
         }
         catch (IOException e)
         {

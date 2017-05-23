@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.fiuady.android.domotics.AccessActivity;
@@ -14,7 +15,7 @@ import com.fiuady.android.domotics.R;
 
 public class prueba extends Fragment{
     private TextView dataTemp;
-    private Button btnUpDate;
+    private ImageButton btnUpDate;
     public prueba() {
 
     }
@@ -25,7 +26,7 @@ public class prueba extends Fragment{
         dataTemp = (TextView)view.findViewById(R.id.tempSensor);
         final AccessActivity activity = (AccessActivity)getActivity();
         dataTemp.setText(activity.getDataTempSensor());
-        btnUpDate = (Button)view.findViewById(R.id.btnConect);
+        btnUpDate = (ImageButton) view.findViewById(R.id.btnConect);
         btnUpDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
