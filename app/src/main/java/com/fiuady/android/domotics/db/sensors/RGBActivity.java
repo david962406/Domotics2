@@ -47,7 +47,7 @@ public class RGBActivity extends AppCompatActivity {
                         .with(RGBActivity.this)
                         .setTitle("Choose RGB color")
                         .initialColor(Color.WHITE)
-                        .wheelType(ColorPickerView.WHEEL_TYPE.CIRCLE)
+                        .wheelType(ColorPickerView.WHEEL_TYPE.FLOWER)
                         .lightnessSliderOnly()
                         .density(12)
                         .setOnColorSelectedListener(new OnColorSelectedListener() {
