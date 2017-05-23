@@ -9,7 +9,7 @@
         android:text="Nombre del perfil "/>
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/textNewProfile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
