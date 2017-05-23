@@ -10,57 +10,54 @@
         android:layout_width="368dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="2dp">
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="8dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
-
+            android:orientation="horizontal"
+            android:gravity="center">
             <ImageButton
-                android:id="@+id/btnNewUser"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:background="@drawable/newuser" />
+                android:background="@drawable/newuser"
+                android:id="@+id/btnNewUser"/>
 
             <ImageButton
-                android:id="@+id/btnLed"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:background="@drawable/lightcontrol" />
+                android:background="@drawable/lightcontrol"
+                android:id="@+id/btnLed"/>
 
             <ImageButton
-                android:id="@+id/btnDoor"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:background="@drawable/rgb" />
+                android:background="@drawable/rgb"
+                android:id="@+id/btnDoor"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
-
+            android:orientation="horizontal"
+            android:gravity="center">
             <ImageButton
-                android:id="@+id/btnBtConection"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:background="@drawable/bt" />
+                android:background="@drawable/bt"
+                android:id="@+id/btnBtConection"/>
 
             <ImageButton
-                android:id="@+id/dataSensors"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:background="@drawable/sensorinfo" />
-
+                android:background="@drawable/sensorinfo"
+                android:id="@+id/dataSensors"/>
             <ImageButton
-                android:id="@+id/btnAlarms"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:background="@drawable/alarm" />
+                android:background="@drawable/alarm"
+                android:id="@+id/btnAlarms"/>
         </LinearLayout>
 
         <FrameLayout
@@ -70,6 +67,7 @@
             android:layout_weight="3" />
 
     </LinearLayout>
+
 
 
 </android.support.constraint.ConstraintLayout>
