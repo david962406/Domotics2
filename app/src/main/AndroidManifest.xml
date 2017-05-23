@@ -38,7 +38,6 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".db.sensors.ledControl" />
         <activity android:name=".db.sensors.RGBActivity" />
-        <activity android:name=".db.sensors.DataSensorsActivity" />
         <activity android:name=".db.sensors.Alarms" />
         <activity android:name=".db.sensors.DoorActivity"></activity>
     </application>

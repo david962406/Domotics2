@@ -21,7 +21,7 @@
             <ImageButton
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:background="@drawable/profiles"
+                android:background="@drawable/newuser"
                 android:id="@+id/btnNewUser"/>
 
             <ImageButton
@@ -33,7 +33,7 @@
             <ImageButton
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:background="@drawable/doors1"
+                android:background="@drawable/rgb"
                 android:id="@+id/btnDoor"/>
         </LinearLayout>
 
@@ -45,13 +45,13 @@
             <ImageButton
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:background="@drawable/bt"
+                android:background="@drawable/moreinfo"
                 android:id="@+id/btnBtConection"/>
 
             <ImageButton
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:background="@drawable/sensorinfo"
+                android:background="@drawable/sensor"
                 android:id="@+id/dataSensors"/>
             <ImageButton
                 android:layout_width="100dp"
