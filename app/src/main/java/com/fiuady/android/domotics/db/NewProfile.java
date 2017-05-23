@@ -257,7 +257,7 @@ public class NewProfile extends android.app.Fragment{
             }
         });
 
-        btnMainRoom = (ImageButton)view.findViewById(R.id.btnEditMainRoom);
+       // btnMainRoom = (ImageButton)view.findViewById(R.id.btnEditMainRoom);--aqui error
         btnSave = (ImageButton)view.findViewById(R.id.btnSave);
 
         return view;

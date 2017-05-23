@@ -275,7 +275,7 @@ public class AccessActivity extends FragmentActivity {
         {
             try
             {
-                btSocket.getOutputStream().write("OPENDOOR".toString().getBytes());
+                btSocket.getOutputStream().write("OPENDOOR1".toString().getBytes());
                 Log.d("dd","TO".toString().getBytes().toString());
                 btSocket.getOutputStream().flush();
 
@@ -295,7 +295,7 @@ public class AccessActivity extends FragmentActivity {
         {
             try
             {
-                btSocket.getOutputStream().write("CLOSEDOOR".toString().getBytes());
+                btSocket.getOutputStream().write("CLOSEDOOR1".toString().getBytes());
                 Log.d("dd","TO".toString().getBytes().toString());
                 btSocket.getOutputStream().flush();
 
@@ -315,7 +315,7 @@ public class AccessActivity extends FragmentActivity {
         {
             try
             {
-                btSocket.getOutputStream().write("OPENDOOR".toString().getBytes());
+                btSocket.getOutputStream().write("OPENDOOR2".toString().getBytes());
                 Log.d("dd","TO".toString().getBytes().toString());
                 btSocket.getOutputStream().flush();
 
@@ -335,7 +335,7 @@ public class AccessActivity extends FragmentActivity {
         {
             try
             {
-                btSocket.getOutputStream().write("CLOSEDOOR".toString().getBytes());
+                btSocket.getOutputStream().write("CLOSEDOOR2".toString().getBytes());
                 Log.d("dd","TO".toString().getBytes().toString());
                 btSocket.getOutputStream().flush();
 
