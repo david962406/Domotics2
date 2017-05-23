@@ -257,7 +257,6 @@ public class NewProfile extends android.app.Fragment{
             }
         });
 
-        btnSwimPool = (ImageButton)view.findViewById(R.id.btnEditSwimPool);
         btnMainRoom = (ImageButton)view.findViewById(R.id.btnEditMainRoom);
         btnSave = (ImageButton)view.findViewById(R.id.btnSave);
 
