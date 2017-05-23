@@ -21,7 +21,7 @@
             <ImageButton
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:background="@drawable/newuser"
+                android:background="@drawable/profiles"
                 android:id="@+id/btnNewUser"/>
 
             <ImageButton
@@ -33,7 +33,7 @@
             <ImageButton
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:background="@drawable/rgb"
+                android:background="@drawable/doors1"
                 android:id="@+id/btnDoor"/>
         </LinearLayout>
 
