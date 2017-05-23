@@ -10,6 +10,14 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Puerta Principal"
+            android:gravity="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="25dp"
+            android:textStyle="bold"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,23 +26,43 @@
 
         <ImageButton
             android:id="@+id/opendoor1"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_alignParentStart="true"
 
 
-            android:background="@drawable/on" />
+            android:background="@drawable/open" />
 
         <ImageButton
             android:id="@+id/closedoor1"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_alignParentEnd="true"
 
             android:layout_alignParentTop="true"
 
-            android:background="@drawable/off" />
+            android:background="@drawable/close" />
     </LinearLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <AutoCompleteTextView
+                android:id="@+id/txt_doorpassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Contraseña"
+                android:maxLines="1" />
+
+        </android.support.design.widget.TextInputLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Puerta Secundaria"
+            android:gravity="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="25dp"
+            android:textStyle="bold"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -42,9 +70,9 @@
         android:gravity="center">
 
     <ImageButton
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/on"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/open"
         android:id="@+id/opendoor2"
         tools:layout_editor_absoluteY="16dp"
         tools:layout_editor_absoluteX="33dp"
@@ -53,9 +81,9 @@
         />
 
     <ImageButton
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/off"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/close"
         android:id="@+id/closedoor2"
         tools:layout_editor_absoluteY="32dp"
         tools:layout_editor_absoluteX="215dp"
