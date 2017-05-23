@@ -11,7 +11,6 @@ import android.widget.EditText;
 
 import com.fiuady.android.domotics.db.Inventory;
 import com.fiuady.android.domotics.db.InventoryHelper;
-import com.fiuady.android.domotics.db.sensors.DeviceList;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -33,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
         txtPassword = (EditText) findViewById(R.id.txt_password);
 
         Button btnLogin = (Button) findViewById(R.id.btn_login);
-        Button btnSignIn = (Button) findViewById(R.id.btn_SignIn);
+        //Button btnSignIn = (Button) findViewById(R.id.btn_SignIn);
         btnLogin.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,14 +58,14 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
-        btnSignIn.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent j = new Intent(LoginActivity.this, SignInActivity.class);
-                startActivity(j);
-
-            }
-        });
+        //btnSignIn.setOnClickListener(new OnClickListener() {
+        //    @Override
+        //    public void onClick(View v) {
+        //        Intent j = new Intent(LoginActivity.this, SignInActivity.class);
+        //        startActivity(j);
+//
+        //    }
+        //});
 
 
     }

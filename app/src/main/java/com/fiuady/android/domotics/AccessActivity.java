@@ -55,9 +55,9 @@ public class AccessActivity extends FragmentActivity {
         //La pueden obtener mediante la clase devicelist
         address = "98:D3:31:50:31:4A";
 
-        new ConnectBT().execute(); //Call the class to connect
+        //new ConnectBT().execute(); //Call the class to connect
 
-        btnNewUser = (ImageButton)findViewById(R.id.btnNewUser);
+        btnNewUser = (ImageButton)findViewById(R.id.btnProfiles);
         btnNewUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

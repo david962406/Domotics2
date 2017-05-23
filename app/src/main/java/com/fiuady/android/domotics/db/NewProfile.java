@@ -16,7 +16,7 @@ public class NewProfile extends android.app.Fragment{
     EditText textNameProfile;
     ImageButton btnRoom1;
     ImageButton btnRoom2;
-    ImageButton btnSwimPool;
+    ImageButton btnOutdoors;
     ImageButton btnMainRoom;
     ImageButton btnSave;
 
@@ -39,8 +39,8 @@ public class NewProfile extends android.app.Fragment{
             }
         });
         btnRoom2 = (ImageButton)view.findViewById(R.id.btnEditRoom2);
-        btnSwimPool = (ImageButton)view.findViewById(R.id.btnEditSwimPool);
-        btnMainRoom = (ImageButton)view.findViewById(R.id.btnEditMainRoom);
+        btnOutdoors = (ImageButton)view.findViewById(R.id.btnEditOutdoors);
+        btnMainRoom = (ImageButton)view.findViewById(R.id.btnEditRoom1);
         btnSave = (ImageButton)view.findViewById(R.id.btnSave);
 
         return view;
