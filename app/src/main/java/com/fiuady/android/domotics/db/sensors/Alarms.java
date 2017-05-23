@@ -62,12 +62,12 @@ public class Alarms extends android.app.Fragment {
             @Override
             public void onClick(View v) {
                 //Enviar los Strings para los casos al arduino
-                //activity.AlarmActivatePIR(isSWPIRChecked);
-               // activity.AlarmActivateSW1(isSW1Checked);
-                //activity.AlarmActivateSW2(isSW2Checked);
-              //  activity.AlarmActivateSW3(isSW3Checked);
-              //  activity.AlarmActivateSW4(isSW4Checked);
-               // activity.AlarmActivateSW5(isSW5Checked);
+                activity.AlarmActivatePIR(isSWPIRChecked);
+                activity.AlarmActivateSW1(isSW1Checked);
+                activity.AlarmActivateSW2(isSW2Checked);
+                activity.AlarmActivateSW3(isSW3Checked);
+                activity.AlarmActivateSW4(isSW4Checked);
+                activity.AlarmActivateSW5(isSW5Checked);
             }
         });
 
