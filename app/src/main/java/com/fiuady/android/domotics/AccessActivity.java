@@ -5,7 +5,6 @@ import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -14,6 +13,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.fiuady.android.domotics.db.NewProfile;
 import com.fiuady.android.domotics.db.sensors.Alarms;
 import com.fiuady.android.domotics.db.sensors.DoorActivity;
 import com.fiuady.android.domotics.db.sensors.ledcontrol2;
@@ -42,6 +42,7 @@ public class AccessActivity extends FragmentActivity {
     final ledcontrol2 fragment2 = new ledcontrol2();
     final Alarms fragment3 = new Alarms();
     final DoorActivity fragment4 = new DoorActivity();
+    final NewProfile fragment5 = new NewProfile();
     String tempData;
 
     @Override
@@ -59,8 +60,10 @@ public class AccessActivity extends FragmentActivity {
         btnNewUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               Intent intent = new Intent(AccessActivity.this, SignInActivity.class);
-                startActivity(intent);
+                android.app.FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.contenedor, fragment5);
+                transaction.commit();
             }
         });
 
