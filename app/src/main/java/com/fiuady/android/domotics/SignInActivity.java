@@ -4,8 +4,8 @@ package com.fiuady.android.domotics;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.fiuady.android.domotics.db.Inventory;
@@ -17,8 +17,8 @@ public class SignInActivity extends AppCompatActivity {
     private EditText txtUserName;
     private EditText txtPassword;
     private EditText txtPassword2;
-    private Button btnSave;
-    private Button btnCancel;
+    private ImageButton btnSave;
+    private ImageButton btnCancel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +32,8 @@ public class SignInActivity extends AppCompatActivity {
         txtPassword = (EditText) findViewById(R.id.txt_NewPassword);
         txtPassword2 = (EditText) findViewById(R.id.txt_NewPassword2);
 
-        btnSave = (Button) findViewById(R.id.btn_SaveNewUser);
-        btnCancel = (Button) findViewById(R.id.btn_CancelUser);
+        btnSave = (ImageButton) findViewById(R.id.btn_SaveNewUser);
+        btnCancel = (ImageButton) findViewById(R.id.btn_CancelUser);
 
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
