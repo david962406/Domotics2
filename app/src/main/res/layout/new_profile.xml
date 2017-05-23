@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre del perfil "/>
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btnEditRoom1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/bt" />
+
+        <ImageButton
+            android:id="@+id/btnEditRoom2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/bt" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btnEditSwimPool"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/bt" />
+
+        <ImageButton
+            android:id="@+id/btnEditMainRoom"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/bt" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="right"
+        android:gravity="right">
+
+        <ImageButton
+            android:id="@+id/btnSave"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/bt" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
