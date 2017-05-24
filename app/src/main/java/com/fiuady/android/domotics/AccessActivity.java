@@ -15,8 +15,6 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.fiuady.android.domotics.db.Inventory;
-import com.fiuady.android.domotics.db.Tables.deviceConfiguration;
 import com.fiuady.android.domotics.db.sensors.Alarms;
 import com.fiuady.android.domotics.db.sensors.DoorActivity;
 import com.fiuady.android.domotics.db.sensors.ledcontrol2;
@@ -29,12 +27,12 @@ import com.flask.colorpicker.builder.ColorPickerDialogBuilder;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.List;
 import java.util.UUID;
 
 public class AccessActivity extends FragmentActivity {
 //
     ImageButton btnSettings;
+    ImageButton btnNewUser;
     ImageButton btnLed;
     ImageButton btnDataSensor;
     ImageButton btnAlarm;
@@ -214,37 +212,13 @@ public class AccessActivity extends FragmentActivity {
 
         @Override
         protected void onProgressUpdate(String... values) {
-            appendMessageText(values[0] );
+            appendMessageText(values[0]);
         }
     }
 
     private void appendMessageText(String text) {
         tempData = text;
-        AlarmSensorsData = text;
-    }
-
-    public void updateProfile (int id) {
-        /*0, 'Iluminación exterior');
-        1, 'Iluminación de la piscina');
-        2, 'Ventilador cuarto 1');
-        3, 'Ventilador cuarto 2');
-        4, 'Sensor de temperatura 1');
-        5, 'Sensor de temperatura 2');
-        6, 'RGB cuarto 1');
-        7, 'RGB cuarto 2');
-        8, 'Sensor de iluminación 1');
-        9, 'Sensor de movimiento');
-        10, 'Puerta 1');
-        11, 'Puerta 2');
-        12, 'Ventana 1');
-        13, 'Ventana 2');
-        14, 'Ventana 3');
-        15, 'Alarma');*/
-
-        Inventory inventory = new Inventory(getApplicationContext());
-        List<deviceConfiguration> list = inventory.getProfilesById(id);
-
-        
+        Log.d("UUUU", "text: "+ text);
     }
 
     public String getDataTempSensor () {
@@ -263,6 +237,33 @@ public class AccessActivity extends FragmentActivity {
         }
         return tempData;
     }
+    public String getDataAlarmSensor () {
+        if (btSocket!=null)
+        {
+            try
+            {
+                btSocket.getOutputStream().write("UPDATEAlarmSensors".toString().getBytes());
+                btSocket.getOutputStream().flush();
+
+            }
+            catch (IOException e)
+            {
+                // msg("Error");
+            }
+        }
+        return tempData;
+    }
+
+
+
+
+
+
+
+
+
+
+
     public void turnOffLed1()
     {
         if (btSocket!=null)
