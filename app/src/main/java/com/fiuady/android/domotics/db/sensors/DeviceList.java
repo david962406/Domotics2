@@ -5,6 +5,7 @@ import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -80,6 +81,7 @@ public class DeviceList extends ActionBarActivity
             for(BluetoothDevice bt : dispVinculados)
             {
                 list.add(bt.getName() + "\n" + bt.getAddress()); //Obtenemos los nombres y direcciones MAC de los disp. vinculados
+
             }
         }
         else
@@ -106,7 +108,8 @@ public class DeviceList extends ActionBarActivity
 
             //Change the activity.
             i.putExtra(EXTRA_ADDRESS, address); //this will be received at ledControl (class) Activity
-            startActivity(i);
+            Log.d("bluetooth",address);
+            //startActivity(i);
         }
     };
 

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.fiuady.android.domotics.db.sensors.DoorActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <ImageButton
+            android:id="@+id/opendoor1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentStart="true"
+
+
+            android:background="@drawable/on" />
+
+        <ImageButton
+            android:id="@+id/closedoor1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentEnd="true"
+
+            android:layout_alignParentTop="true"
+
+            android:background="@drawable/off" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/on"
+        android:id="@+id/opendoor2"
+        tools:layout_editor_absoluteY="16dp"
+        tools:layout_editor_absoluteX="33dp"
+
+        android:layout_centerVertical="true"
+        />
+
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/off"
+        android:id="@+id/closedoor2"
+        tools:layout_editor_absoluteY="32dp"
+        tools:layout_editor_absoluteX="215dp"
+        android:layout_alignTop="@+id/opendoor2"
+         />
+    </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
