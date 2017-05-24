@@ -8,9 +8,13 @@ import android.view.View.OnClickListener;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.fiuady.android.domotics.db.Inventory;
 import com.fiuady.android.domotics.db.InventoryHelper;
+import com.fiuady.android.domotics.db.Tables.Users;
+
+import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -37,21 +41,25 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Codigo de inicio de sesión
-                /*final String username = txtUserName.getText().toString();
+                final String username = txtUserName.getText().toString();
                 final String password = txtPassword.getText().toString();
                 List<Users> users = inventory.getAllUsers();
+                int lastConfiguration = 0;
 
                 for(Users u : users){
                     if(username.equals(u.getUserName()) && password.equals(u.getPassword())){
                         Access = true;
+                        lastConfiguration = u.getLastConfiguration();
+                        break;
                     }
                 }
                 if(Access){
                     Intent i = new Intent(LoginActivity.this, AccessActivity.class);
+                    i.putExtra("lc", lastConfiguration);
                     startActivity(i);
                 }else {
                     Toast.makeText(LoginActivity.this, "Usuario y/o contraseña no coinciden", Toast.LENGTH_SHORT).show();
-                }*/
+                }
                 Intent i = new Intent(LoginActivity.this, AccessActivity.class);
                 startActivity(i);
             }

@@ -124,7 +124,7 @@ public final class Inventory {
         return list;
     }
 
-    public void newProfile (int data[], int rgb1[], int rgb2[],  String profile, int userid) {
+    public void newProfile (int data[], String rgb1, String rgb2,  String profile, int userid) {
         //Insertando datos en sql
 
         //Recuperando id..
@@ -142,13 +142,11 @@ public final class Inventory {
         //Ventilador cuarto 1
         db.execSQL("INSERT INTO device_configuration (device_id, sensor_active, data, device_active, id_configuration) VALUES (2, " + data[1] + ", NULL, " + data[0] + ", " + id + ");");
         //Rgb cuarto 1
-        String rgb = Integer.toString(rgb1[0]) + "-" + Integer.toString(rgb1[1]) + "-" + Integer.toString(rgb1[2]);
-        db.execSQL("INSERT INTO device_configuration (device_id, sensor_active, data, device_active, id_configuration) VALUES (6, NULL, "   + rgb + ", " + data[2] + ", " + id + ");");
+        db.execSQL("INSERT INTO device_configuration (device_id, sensor_active, data, device_active, id_configuration) VALUES (6, NULL, "   + rgb1 + ", " + data[2] + ", " + id + ");");
         //Ventilador cuarto 2
         db.execSQL("INSERT INTO device_configuration (device_id, sensor_active, data, device_active, id_configuration) VALUES (3, " + data[4] + ", NULL, " + data[3] + ", " + id + ");");
         //Rgb cuarto 2
-        rgb = Integer.toString(rgb2[0]) + "-" + Integer.toString(rgb2[1]) + "-" + Integer.toString(rgb2[2]);
-        db.execSQL("INSERT INTO device_configuration (device_id, sensor_active, data, device_active, id_configuration) VALUES (7, NULL, "   + rgb + ", " + data[5] + ", " + id + ");");
+        db.execSQL("INSERT INTO device_configuration (device_id, sensor_active, data, device_active, id_configuration) VALUES (7, NULL, "   + rgb2 + ", " + data[5] + ", " + id + ");");
 
         //--Exteriores--
         //Led externo

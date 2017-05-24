@@ -41,6 +41,7 @@ public class NewProfile extends android.app.Fragment{
     boolean room1rgb = false;
     int rgbDataRoom1[] = new int[3];
     int rgbr1 = 0;
+    String rgbstring1;
 
     //Room2
     int room2VActive = 0;
@@ -48,6 +49,7 @@ public class NewProfile extends android.app.Fragment{
     boolean room2rgb = false;
     int rgbDataRoom2[] = new int[3];
     int rgbr2 = 0;
+    String rgbstring2;
 
     //Outsides
     int led1Status = 0;
@@ -141,9 +143,66 @@ public class NewProfile extends android.app.Fragment{
                                 .setPositiveButton("ok", new ColorPickerClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int selectedColor, Integer[] allColors) {
+
                                         r = (selectedColor >> 16) & 0xFF;
                                         g = (selectedColor >> 8) & 0xFF;
                                         b = (selectedColor >> 0) & 0xFF;
+                                        String a,c,d;
+                                        if(r==0)
+                                        {
+                                            a="000";
+                                        }
+                                        else
+                                        {
+                                            if(r<10)
+                                            {
+                                                a="00"+Integer.toString(r);
+                                            }
+                                            else if (r<100)
+                                            {
+                                                a="0"+Integer.toString(r);
+                                            }
+                                            else
+                                            {a=Integer.toString(r);}
+
+                                        }
+                                        if(g==0)
+                                        {
+                                            c="000";
+                                        }
+                                        else
+                                        {
+                                            if(g<10)
+                                            {
+                                                c="00"+Integer.toString(g);
+                                            }
+                                            else if (g<100)
+                                            {
+                                                c="0"+Integer.toString(g);
+                                            }
+                                            else
+                                            {c=Integer.toString(g);}
+
+                                        }
+                                        if(b==0)
+                                        {
+                                            d="000";
+                                        }
+                                        else
+                                        {
+                                            if(b<10)
+                                            {
+                                                d="00"+Integer.toString(b);
+                                            }
+                                            else if (b<100)
+                                            {
+                                                d="0"+Integer.toString(b);
+                                            }
+                                            else
+                                            {d=Integer.toString(b);}
+
+                                        }
+                                        rgbstring1 = a + c + d;
                                         room1rgb = true;
                                         rgbr1 = 1;
                                     }
@@ -243,6 +302,62 @@ public class NewProfile extends android.app.Fragment{
                                         r = (selectedColor >> 16) & 0xFF;
                                         g = (selectedColor >> 8) & 0xFF;
                                         b = (selectedColor >> 0) & 0xFF;
+                                        String a,c,d;
+                                        if(r==0)
+                                        {
+                                            a="000";
+                                        }
+                                        else
+                                        {
+                                            if(r<10)
+                                            {
+                                                a="00"+Integer.toString(r);
+                                            }
+                                            else if (r<100)
+                                            {
+                                                a="0"+Integer.toString(r);
+                                            }
+                                            else
+                                            {a=Integer.toString(r);}
+
+                                        }
+                                        if(g==0)
+                                        {
+                                            c="000";
+                                        }
+                                        else
+                                        {
+                                            if(g<10)
+                                            {
+                                                c="00"+Integer.toString(g);
+                                            }
+                                            else if (g<100)
+                                            {
+                                                c="0"+Integer.toString(g);
+                                            }
+                                            else
+                                            {c=Integer.toString(g);}
+
+                                        }
+                                        if(b==0)
+                                        {
+                                            d="000";
+                                        }
+                                        else
+                                        {
+                                            if(b<10)
+                                            {
+                                                d="00"+Integer.toString(b);
+                                            }
+                                            else if (b<100)
+                                            {
+                                                d="0"+Integer.toString(b);
+                                            }
+                                            else
+                                            {d=Integer.toString(b);}
+
+                                        }
+                                        rgbstring2 = a + c + d;
                                         room2rgb = true;
                                         rgbr2 = 1;
                                     }
@@ -479,7 +594,7 @@ public class NewProfile extends android.app.Fragment{
                 data[17] = sw5;
 
                 Inventory inventory = new Inventory(activity.getApplicationContext());
-                inventory.newProfile(data, rgbDataRoom1, rgbDataRoom2, textNameProfile.getText().toString(), 0);
+                inventory.newProfile(data, rgbstring1, rgbstring2, textNameProfile.getText().toString(), 0);
 
                 Toast.makeText(activity.getApplicationContext(), "Perfil agregado exitosamente!", Toast.LENGTH_SHORT).show();
 

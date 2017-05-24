@@ -65,7 +65,7 @@ public class Alarms extends android.app.Fragment {
         dataSW5 = (TextView)view.findViewById(R.id.txt_StateSW5);
 
         final AccessActivity activity = (AccessActivity)getActivity();
-        dataPIR.setText(activity.getDataAlarmSensor());
+        dataPIR.setText(activity.getDataAlarmSensors());
         dataPIR.setText("");
         String MSGAlarm = dataPIR.getText().toString();
         Log.d("FFFF", MSGAlarm);
@@ -86,7 +86,7 @@ public class Alarms extends android.app.Fragment {
             String AlarmSensorsStatus;
             @Override
             public void onClick(View v) {
-                dataPIR.setText(activity.getDataAlarmSensor());
+                dataPIR.setText(activity.getDataAlarmSensors());
             }
         });
 

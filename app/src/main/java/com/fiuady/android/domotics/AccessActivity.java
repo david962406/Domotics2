@@ -134,6 +134,9 @@ public class AccessActivity extends FragmentActivity {
 
             }
         });
+
+        int lc = getIntent().getExtras().getInt("lc");
+        updateProfile(lc);
     }
 
     private class ConnectBT extends AsyncTask<Void, Void, Void>  // UI thread
@@ -241,10 +244,160 @@ public class AccessActivity extends FragmentActivity {
         14, 'Ventana 3');
         15, 'Alarma');*/
 
+        String pir = "";
+        String sw1 = "";
+        String sw2 = "";
+        String sw3 = "";
+        String sw4 = "";
+        String sw5 = "";
+
         Inventory inventory = new Inventory(getApplicationContext());
         List<deviceConfiguration> list = inventory.getProfilesById(id);
 
-        
+        for (deviceConfiguration dc : list) {
+            switch (dc.getDeviceId()) {
+                case 0: {
+                    if (dc.getSensorActive() == 1) {autoLed1(); break;}
+                    else if (dc.getSensorActive() == 0 && dc.getDeviceActive() == 1) {
+                        turnOnLed1();
+                        lumchange(String.valueOf(dc.getData()));
+                        break;
+                    }
+                    else {
+                        turnOffLed1();
+                        break;
+                    }
+                }
+
+                case 1: {
+                    if (dc.getSensorActive() == 1) {autoLed1(); break;}
+                    else if (dc.getSensorActive() == 0 && dc.getDeviceActive() == 1) {
+                        turnOnLed2();
+                        lumchange2(String.valueOf(dc.getData()));
+                        break;
+                    }
+                    else {
+                        turnOffLed1();
+                        break;
+                    }
+                }
+
+                case 2: {
+                    if (dc.getSensorActive() == 1) {
+                        turnonsmart();
+                        break;
+                    }
+                    else if (dc.getSensorActive() == 0 && dc.getDeviceActive() == 1) {
+                        turnonfan1();
+                        break;
+                    }
+                    else {
+                        turnofffan1();
+                        break;
+                    }
+                }
+
+                case 3: {
+                    if (dc.getSensorActive() == 1) {
+                        turnonsmart2();
+                        break;
+                    }
+                    else if (dc.getSensorActive() == 0 && dc.getDeviceActive() == 1) {
+                        turnonfan2();
+                        break;
+                    }
+                    else {
+                        turnofffan2();
+                        break;
+                    }
+                }
+
+                case 6: {
+                    if (dc.getDeviceActive() == 1) {
+                        RGB1COLORPARAMETER(dc.getData());
+                        break;
+                    }
+                    else {
+                        turnOffrgb();
+                        break;
+                    }
+                }
+
+                case 7: {
+                    if (dc.getDeviceActive() == 1) {
+                        RGB2COLORPARAMETER(dc.getData());
+                        break;
+                    }
+                    else {
+                        turnOffrgb2();
+                        break;
+                    }
+                }
+
+                case 9: {
+                    if (dc.getDeviceActive() == 1) {
+                        pir = "1";
+                        break;
+                    }
+                    else {
+                        pir = "0";
+                        break;
+                    }
+                }
+                case 10: {
+                    if (dc.getDeviceActive() == 1) {
+                        sw1 = "1";
+                        break;
+                    }
+                    else {
+                        sw1 = "0";
+                        break;
+                    }
+                }
+                case 11: {
+                    if (dc.getDeviceActive() == 1) {
+                        sw2 = "1";
+                        break;
+                    }
+                    else {
+                        sw2 = "0";
+                        break;
+                    }
+                }
+                case 12: {
+                    if (dc.getDeviceActive() == 1) {
+                        sw3 = "1";
+                        break;
+                    }
+                    else {
+                        sw3 = "0";
+                        break;
+                    }
+                }
+                case 13: {
+                    if (dc.getDeviceActive() == 1) {
+                        sw4 = "1";
+                        break;
+                    }
+                    else {
+                        sw4 = "0";
+                        break;
+                    }
+                }
+                case 14: {
+                    if (dc.getDeviceActive() == 1) {
+                        sw5 = "1";
+                        break;
+                    }
+                    else {
+                        sw5 = "0";
+                        break;
+                    }
+                }
+            }
+        }
+        String clave = pir + sw1 + sw2 + sw3 + sw4 + sw5;
+        updateAlarms(clave);
     }
 
     public String getDataTempSensor () {
@@ -297,6 +450,22 @@ public class AccessActivity extends FragmentActivity {
             {
                 // msg("Error");
             }
+        }
+    }
+
+    public void autoLed1 () {
+        String code = "ACTIVATEAUTOLED";
+        try
+        {
+            btSocket.getOutputStream().write(code.getBytes());
+            btSocket.getOutputStream().flush();
+
+
+
+        }
+        catch (IOException e)
+        {
+            // msg("Error");
         }
     }
 
@@ -439,7 +608,6 @@ public class AccessActivity extends FragmentActivity {
             String value2;
             value2="LUM"+value;
             Log.d("RGB",value2);
-
             btSocket.getOutputStream().write(value2.getBytes());
            btSocket.getOutputStream().flush();
 
@@ -514,6 +682,17 @@ public class AccessActivity extends FragmentActivity {
             {
                 //msg("Error");
             }
+        }
+    }
+
+    public void updateAlarms (String Clave) {
+        try {
+            btSocket.getOutputStream().write(Clave.getBytes());
+            btSocket.getOutputStream().flush();
+        }
+
+        catch (Exception e) {
+
         }
     }
 
@@ -692,6 +871,46 @@ public class AccessActivity extends FragmentActivity {
             })
             .build()
             .show();
+
+    }
+    public void RGB1COLORPARAMETER(String rgb)
+    {
+                    try
+                    {
+                        String value2;
+                        value2="RGB1D"+rgb;
+                        btSocket.getOutputStream().write(value2.getBytes());
+
+
+                    }
+                    catch (IOException e)
+                    {
+
+                    }
+
+
+
+
+
+    }
+    public void RGB2COLORPARAMETER(String rgb)
+    {
+        try
+        {
+            String value2;
+            value2="RGB2D"+rgb;
+            btSocket.getOutputStream().write(value2.getBytes());
+
+
+        }
+        catch (IOException e)
+        {
+
+        }
+
+
+
+
 
     }
     public void RGB2COLOR()
@@ -875,6 +1094,36 @@ public class AccessActivity extends FragmentActivity {
         {
             String value2;
             value2="SMARTOFF";
+            btSocket.getOutputStream().write(value2.getBytes());
+
+
+        }
+        catch (IOException e)
+        {
+
+        }
+    }
+    public void turnonsmart2()
+    {
+        try
+        {
+            String value2;
+            value2="SMARTON2";
+            btSocket.getOutputStream().write(value2.getBytes());
+
+
+        }
+        catch (IOException e)
+        {
+
+        }
+    }
+    public void turnoffsmart2()
+    {
+        try
+        {
+            String value2;
+            value2="SMARTOFF2";
             btSocket.getOutputStream().write(value2.getBytes());
 
 
