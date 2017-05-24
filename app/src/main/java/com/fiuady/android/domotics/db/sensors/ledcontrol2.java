@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -51,22 +50,22 @@ public class ledcontrol2 extends Fragment {
         lumcontrol.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if (fromUser==true)
-                {
+
+
                     activity.lumchange(String.valueOf(progress));
-                }
+
 
             }
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-                activity.lumchange(String.valueOf(seekBar.getProgress()));
+               // activity.lumchange(String.valueOf(seekBar.getProgress()));
 
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                activity.lumchange(String.valueOf(seekBar.getProgress()));
+               // activity.lumchange(String.valueOf(seekBar.getProgress()));
 
             }
         });

@@ -135,6 +135,7 @@ public class AccessActivity extends FragmentActivity {
                 if (btSocket == null || !isBtConnected)
                 {
                     myBluetooth = BluetoothAdapter.getDefaultAdapter();
+                    myBluetooth = BluetoothAdapter.getDefaultAdapter();
                     BluetoothDevice dispositivo = myBluetooth.getRemoteDevice(address);//conectamos al dispositivo y chequeamos si esta disponible
                     btSocket = dispositivo.createInsecureRfcommSocketToServiceRecord(myUUID);
                     BluetoothAdapter.getDefaultAdapter().cancelDiscovery();
@@ -366,6 +367,113 @@ public class AccessActivity extends FragmentActivity {
 
 
     }
+    public void AlarmActivatePIR(boolean isChecked) {
+        if (btSocket!=null) {
+            try {
+                if(isChecked){
+                    btSocket.getOutputStream().write("PIR".toString().getBytes());
+                    btSocket.getOutputStream().flush();
+                }else {
+                    btSocket.getOutputStream().write("NOTPIR".toString().getBytes());
+                    btSocket.getOutputStream().flush();
+                }
 
+            }
+            catch (IOException e)
+            {
+                //msg("Error");
+            }
+        }
+    }
+    public void AlarmActivateSW1(boolean isChecked) {
+        if (btSocket!=null) {
+            try {
+                if(isChecked){
+                    btSocket.getOutputStream().write("SW1".toString().getBytes());
+                    btSocket.getOutputStream().flush();
+                }else {
+                    btSocket.getOutputStream().write("NOTSW1".toString().getBytes());
+                    btSocket.getOutputStream().flush();
+                }
+
+            }
+            catch (IOException e)
+            {
+                //msg("Error");
+            }
+        }
+    }
+    public void AlarmActivateSW2(boolean isChecked) {
+        if (btSocket!=null) {
+            try {
+                if(isChecked){
+                    btSocket.getOutputStream().write("SW2".toString().getBytes());
+                    btSocket.getOutputStream().flush();
+                }else {
+                    btSocket.getOutputStream().write("NOTSW2".toString().getBytes());
+                    btSocket.getOutputStream().flush();
+                }
+
+            }
+            catch (IOException e)
+            {
+                //msg("Error");
+            }
+        }
+    }
+    public void AlarmActivateSW3(boolean isChecked) {
+        if (btSocket!=null) {
+            try {
+                if(isChecked){
+                    btSocket.getOutputStream().write("SW3".toString().getBytes());
+                    btSocket.getOutputStream().flush();
+                }else {
+                    btSocket.getOutputStream().write("NOTSW3".toString().getBytes());
+                    btSocket.getOutputStream().flush();
+                }
+
+            }
+            catch (IOException e)
+            {
+                //msg("Error");
+            }
+        }
+    }
+    public void AlarmActivateSW4(boolean isChecked) {
+        if (btSocket!=null) {
+            try {
+                if(isChecked){
+                    btSocket.getOutputStream().write("SW4".toString().getBytes());
+                    btSocket.getOutputStream().flush();
+                }else {
+                    btSocket.getOutputStream().write("NOTSW4".toString().getBytes());
+                    btSocket.getOutputStream().flush();
+                }
+
+            }
+            catch (IOException e)
+            {
+                //msg("Error");
+            }
+        }
+    }
+    public void AlarmActivateSW5(boolean isChecked) {
+        if (btSocket!=null) {
+            try {
+                if(isChecked){
+                    btSocket.getOutputStream().write("SW5".toString().getBytes());
+                    btSocket.getOutputStream().flush();
+                }else {
+                    btSocket.getOutputStream().write("NOTSW5".toString().getBytes());
+                    btSocket.getOutputStream().flush();
+                }
+
+            }
+            catch (IOException e)
+            {
+                //msg("Error");
+            }
+        }
+    }
 
 }
