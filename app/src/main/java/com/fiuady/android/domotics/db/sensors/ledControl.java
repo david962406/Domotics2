@@ -44,11 +44,11 @@ public class ledControl extends ActionBarActivity {
 
         setContentView(R.layout.activity_led_control);
 
-        btnOn = (ImageButton) findViewById(R.id.button2);
-        btnOff = (ImageButton)findViewById(R.id.button3);
+        //btnOn = (ImageButton) findViewById(R.id.button2);
+        //btnOff = (ImageButton)findViewById(R.id.button3);
        // btnDis = (ImageButton)findViewById(R.id.button4);
         brightness = (SeekBar)findViewById(R.id.seekBar);
-        lumn = (TextView)findViewById(R.id.lumn);
+        //lumn = (TextView)findViewById(R.id.lumn);
 
         new ConnectBT().execute(); //Call the class to connect
 
