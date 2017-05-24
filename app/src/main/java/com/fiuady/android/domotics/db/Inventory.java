@@ -6,8 +6,10 @@ import android.database.CursorWrapper;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.fiuady.android.domotics.db.Tables.Profiles;
 import com.fiuady.android.domotics.db.Tables.UserData;
 import com.fiuady.android.domotics.db.Tables.Users;
+import com.fiuady.android.domotics.db.Tables.deviceConfiguration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +33,23 @@ public final class Inventory {
                     cursor.getInt(cursor.getColumnIndex(DomoticsDbSchema.UsersTable.Columns.LAST_CONFIGURATION)),
                     cursor.getString(cursor.getColumnIndex(DomoticsDbSchema.UserDataTable.Columns.FIRST_NAME)),
                     cursor.getString(cursor.getColumnIndex(DomoticsDbSchema.UserDataTable.Columns.LAST_NAME)));
+        }
+    }
+
+    class ProfileCursor extends CursorWrapper {
+        public ProfileCursor (Cursor cursor){super(cursor);}
+        public Profiles getProfiles () {
+            Cursor cursor = getWrappedCursor();
+            return new Profiles(cursor.getInt(0), cursor.getInt(1), cursor.getString(2));
+        }
+    }
+
+    class DeviceConfCursor extends CursorWrapper {
+        public DeviceConfCursor (Cursor cursor) {super(cursor);}
+        public deviceConfiguration getProfiles () {
+            Cursor cursor = getWrappedCursor();
+            return new deviceConfiguration(cursor.getInt(0), cursor.getInt(1), cursor.getString(2),
+                    cursor.getInt(3), cursor.getInt(4));
         }
     }
 
@@ -75,6 +94,34 @@ public final class Inventory {
         cursor.close();
         Log.d("prueba", "2.1");
         return id+1;
+    }
+
+    public List<Profiles> getProfiles () {
+        ArrayList<Profiles> list = new ArrayList();
+        ProfileCursor cursor = new ProfileCursor(db.rawQuery("SELECT * \n" +
+                "FROM configuration", null));
+        while (cursor.moveToNext()) {
+
+            list.add(cursor.getProfiles());
+        }
+        cursor.close();
+
+        return list;
+    }
+
+    public List<deviceConfiguration> getProfilesById (int id) {
+        DeviceConfCursor cursor = new DeviceConfCursor(db.rawQuery("SELECT * \n" +
+                "FROM device_configuration\n" +
+                "WHERE id_configuration = " + id + ";", null));
+
+        ArrayList<deviceConfiguration> list = new ArrayList<>();
+        while (cursor.moveToNext()) {
+            list.add(cursor.getProfiles());
+        }
+
+        cursor.close();
+
+        return list;
     }
 
     public void newProfile (int data[], int rgb1[], int rgb2[],  String profile, int userid) {

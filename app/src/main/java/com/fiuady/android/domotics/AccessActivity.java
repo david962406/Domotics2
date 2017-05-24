@@ -13,7 +13,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.fiuady.android.domotics.db.NewProfile;
+import com.fiuady.android.domotics.db.Inventory;
+import com.fiuady.android.domotics.db.Tables.deviceConfiguration;
 import com.fiuady.android.domotics.db.sensors.Alarms;
 import com.fiuady.android.domotics.db.sensors.DoorActivity;
 import com.fiuady.android.domotics.db.sensors.ledcontrol2;
@@ -22,6 +23,7 @@ import com.fiuady.android.domotics.db.sensors.prueba;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.List;
 import java.util.UUID;
 
 public class AccessActivity extends FragmentActivity {
@@ -43,7 +45,7 @@ public class AccessActivity extends FragmentActivity {
     final ledcontrol2 fragment2 = new ledcontrol2();
     final Alarms fragment3 = new Alarms();
     final DoorActivity fragment4 = new DoorActivity();
-    final NewProfile fragment5 = new NewProfile();
+    final InfoActivity fragment5 = new InfoActivity();
     String tempData;
     String AlarmSensorsData;
 
@@ -214,6 +216,30 @@ public class AccessActivity extends FragmentActivity {
     private void appendMessageText(String text) {
         tempData = text;
         AlarmSensorsData = text;
+    }
+
+    public void updateProfile (int id) {
+        /*0, 'Iluminación exterior');
+        1, 'Iluminación de la piscina');
+        2, 'Ventilador cuarto 1');
+        3, 'Ventilador cuarto 2');
+        4, 'Sensor de temperatura 1');
+        5, 'Sensor de temperatura 2');
+        6, 'RGB cuarto 1');
+        7, 'RGB cuarto 2');
+        8, 'Sensor de iluminación 1');
+        9, 'Sensor de movimiento');
+        10, 'Puerta 1');
+        11, 'Puerta 2');
+        12, 'Ventana 1');
+        13, 'Ventana 2');
+        14, 'Ventana 3');
+        15, 'Alarma');*/
+
+        Inventory inventory = new Inventory(getApplicationContext());
+        List<deviceConfiguration> list = inventory.getProfilesById(id);
+
+        
     }
 
     public String getDataTempSensor () {
