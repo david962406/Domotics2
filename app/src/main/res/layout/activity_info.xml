@@ -38,9 +38,10 @@
                 android:background="@drawable/userpassword"/>
 
             <ImageButton
-                android:id="@+id/changedoorpasswordbtn"
+                android:saveEnabled="false"
+                android:id="@+id/adminoptions"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:background="@drawable/doorpassword"/>
+                android:background="@drawable/adminoptions"/>
         </LinearLayout>
 </LinearLayout>

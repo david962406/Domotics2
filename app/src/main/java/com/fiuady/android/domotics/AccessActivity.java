@@ -280,8 +280,6 @@ public class AccessActivity extends FragmentActivity {
                 btSocket.getOutputStream().write("OPENDOOR1".toString().getBytes());
                 Log.d("dd","TO".toString().getBytes().toString());
                 btSocket.getOutputStream().flush();
-
-
             }
             catch (IOException e)
             {

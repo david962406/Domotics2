@@ -77,5 +77,14 @@ public final class Inventory {
         return id+1;
     }
 
+    public int getCurrentUserId(String user_name) {
+        Cursor cursor = db.rawQuery("SELECT id FROM users\n" +
+                "WHERE user_name = '" + user_name + "'", null);
+        cursor.moveToFirst();
+        int id = cursor.getInt(0);
+        cursor.close();
+        return id;
+    }
+
 }
 
