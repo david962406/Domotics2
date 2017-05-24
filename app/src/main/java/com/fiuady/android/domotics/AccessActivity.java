@@ -257,7 +257,7 @@ public class AccessActivity extends FragmentActivity {
         for (deviceConfiguration dc : list) {
             switch (dc.getDeviceId()) {
                 case 0: {
-                    if (dc.getSensorActive() == 1) {autoLed1(); break;}
+                    if (dc.getSensorActive() == 1) {turnOnLed1(); break;}
                     else if (dc.getSensorActive() == 0 && dc.getDeviceActive() == 1) {
                         turnOnLed1();
                         lumchange(String.valueOf(dc.getData()));
@@ -270,7 +270,7 @@ public class AccessActivity extends FragmentActivity {
                 }
 
                 case 1: {
-                    if (dc.getSensorActive() == 1) {autoLed1(); break;}
+                    if (dc.getSensorActive() == 1) {turnOnLed2(); break;}
                     else if (dc.getSensorActive() == 0 && dc.getDeviceActive() == 1) {
                         turnOnLed2();
                         lumchange2(String.valueOf(dc.getData()));

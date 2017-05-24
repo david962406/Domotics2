@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.fiuady.android.domotics.AccessActivity;
 import com.fiuady.android.domotics.R;
@@ -43,6 +44,15 @@ public class ChangeProfile extends Fragment{
         spinner.setAdapter(adapter);
 
         btnOK = (ImageButton)view.findViewById(R.id.btnOk);
+        btnOK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Profiles p = adapter.getItem(spinner.getSelectedItemPosition());
+                activity.updateProfile(p.getId());
+                Toast.makeText(activity.getApplicationContext(), "Perfil cambiado exitosamente", Toast.LENGTH_SHORT).show();
+                getActivity().getFragmentManager().beginTransaction().remove(ChangeProfile.this).commit();
+            }
+        });
 
         return view;
     }
