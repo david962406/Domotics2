@@ -1,79 +1,111 @@
 package com.fiuady.android.domotics.db.sensors;
 
+import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.SeekBar;
+import android.widget.Switch;
 
+import com.fiuady.android.domotics.AccessActivity;
 import com.fiuady.android.domotics.R;
 import com.flask.colorpicker.ColorPickerView;
 import com.flask.colorpicker.OnColorSelectedListener;
 import com.flask.colorpicker.builder.ColorPickerClickListener;
 import com.flask.colorpicker.builder.ColorPickerDialogBuilder;
 
-public class RGBActivity extends AppCompatActivity {
-    ImageButton lampara1;
-    private void sendColor(int r, int g, int b) {
-      //aqui se envian datos al bluetooth
+public class RGBActivity extends Fragment {
+    ImageButton lampbutton1;
+    ImageButton lampbutton2;
+    Switch SWrgb1;
+    Switch SWrgb2;
 
-
-        Log.d("RGB", "color en hexadecimal"+ lampara1.getColorFilter()+"el que no es filtro");
-
-        ColorStateList csl = new ColorStateList(new int[][]{{}}, new int[]{Color.rgb(r,g,b)});
-        lampara1.setBackgroundTintList(csl);
-
+    public void SendColor1 (int r, int g, int b)
+    {
+        ColorStateList cs1 = new ColorStateList(new int[][]{{}}, new int[]{Color.rgb(r,g,b)});
+        lampbutton1.setBackgroundTintList(cs1);
     }
 
+    public void SendColor2 (int r, int g, int b)
+    {
+        ColorStateList cs1 = new ColorStateList(new int[][]{{}}, new int[]{Color.rgb(r,g,b)});
+        lampbutton2.setBackgroundTintList(cs1);
+    }
+
+
+    public RGBActivity() {
+    }
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rgb);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
 
-         lampara1=(ImageButton)findViewById(R.id.lampbutton) ;
 
-        //lampara1.setBackgroundColor(Color.BLACK);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        View view = inflater.inflate(R.layout.activity_rgb, container, false);
+        final AccessActivity activity = (AccessActivity)getActivity();
+        //dataTemp.setText(activity.getDataTempSensor());
+        SWrgb1 = (Switch)view.findViewById(R.id.sw_RGB1);
+        SWrgb2 = (Switch)view.findViewById(R.id.sw_RGB2);
+        lampbutton1=(ImageButton) view.findViewById(R.id.lampbutton1);
+        lampbutton2=(ImageButton)view.findViewById(R.id.lampbutton2);
+
+        lampbutton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ColorPickerDialogBuilder
-                        .with(RGBActivity.this)
-                        .setTitle("Choose RGB color")
-                        .initialColor(Color.WHITE)
-                        .wheelType(ColorPickerView.WHEEL_TYPE.CIRCLE)
-                        .lightnessSliderOnly()
-                        .density(12)
-                        .setOnColorSelectedListener(new OnColorSelectedListener() {
-                            @Override
-                            public void onColorSelected(int selectedColor) {
-                                // Nothing to do...
-                            }
-                        })
-                        .setPositiveButton("ok", new ColorPickerClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int selectedColor, Integer[] allColors) {
-                                int r = (selectedColor >> 16) & 0xFF;
-                                int g = (selectedColor >> 8) & 0xFF;
-                                int b = (selectedColor >> 0) & 0xFF;
-                                Log.d("RGB", "R [" + r + "] - G [" + g + "] - B [" + b + "]");
-                                sendColor(r,g,b);
-                            }
-                        })
-                        .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                            }
-                        })
-                        .build()
-                        .show();
+                activity.colorchange(1);
             }
         });
+        lampbutton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               activity.colorchange(2);
+            }
+        });
+
+        SWrgb1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (SWrgb1.isChecked()) {
+                    activity.turnRGBon(1);
+                }
+                else
+                {
+                    activity.turnRGBoff(1);
+                }
+            }
+        });
+
+        SWrgb2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (SWrgb2.isActivated()) {
+                    activity.turnRGBon(2);
+                }
+                else
+                {
+                    activity.turnRGBoff(2);
+                }
+            }
+        });
+
+        // btnUpDate.setOnClickListener(new View.OnClickListener() {
+        //     @Override
+        //     public void onClick(View v) {
+        //         dataTemp.setText(activity.getDataTempSensor());
+        //     }
+        // });
+        return view;
+
     }
 }

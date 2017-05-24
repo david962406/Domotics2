@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.fiuady.android.domotics.AccessActivity;
 import com.fiuady.android.domotics.R;
+import com.fiuady.android.domotics.db.Inventory;
 
 public class DoorActivity extends Fragment{
     private TextView dataTemp;

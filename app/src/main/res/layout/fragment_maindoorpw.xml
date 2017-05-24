@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_root"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:padding="10dp" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inserte el PIN (4 dígitos): "
+        android:labelFor="@+id/editTextDialogUserInput"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/editTextDialogUserInput"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:digits="0123456789"
+            android:inputType="numberPassword"
+            android:maxLength="4"
+            android:layout_alignTop="@+id/btn_ChangePin"
+            android:layout_alignParentStart="true">
+
+            <requestFocus />
+
+        </EditText>
+
+        <Button
+            android:id="@+id/btn_ChangePin"
+            android:layout_width="110dp"
+            android:layout_height="35dp"
+            android:layout_gravity="start"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_toEndOf="@+id/editTextDialogUserInput"
+            android:background="@color/colorPrimary"
+            android:text="Cambiar PIN"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

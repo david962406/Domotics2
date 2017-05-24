@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.CursorWrapper;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.fiuady.android.domotics.db.Tables.Doors;
 import com.fiuady.android.domotics.db.Tables.UserData;
 import com.fiuady.android.domotics.db.Tables.Users;
 
@@ -30,6 +31,17 @@ public final class Inventory {
                     cursor.getInt(cursor.getColumnIndex(DomoticsDbSchema.UsersTable.Columns.LAST_CONFIGURATION)),
                     cursor.getString(cursor.getColumnIndex(DomoticsDbSchema.UserDataTable.Columns.FIRST_NAME)),
                     cursor.getString(cursor.getColumnIndex(DomoticsDbSchema.UserDataTable.Columns.LAST_NAME)));
+        }
+    }
+
+    class DoorCursor extends CursorWrapper{
+        public  DoorCursor(Cursor cursor) {
+            super(cursor);
+        }
+        public Doors getDoor(){
+            Cursor cursor= getWrappedCursor();
+            return new Doors(cursor.getInt(cursor.getColumnIndex(DomoticsDbSchema.DoorsTable.Columns.ID)),
+                    cursor.getInt(cursor.getColumnIndex(DomoticsDbSchema.DoorsTable.Columns.PASSWORD)));
         }
     }
 
@@ -60,12 +72,29 @@ public final class Inventory {
         db.execSQL("INSERT INTO user_data  (user_id, first_name, last_name) VALUES (" + id + ", '" + firstName + "', '" + lastName + "');");
     }
 
+    public int getDoorPassword () {
+        ArrayList<Doors> list=new ArrayList<Doors>();
+        Cursor cursor = db.rawQuery("SELECT d.id AS id, d.password AS password FROM doors d", null);
+
+        cursor.moveToPosition(0);
+        int doorpassword = cursor.getInt(1);
+        cursor.close();
+        return doorpassword;
+    }
+
     public int getLastUserId(){
         Cursor cursor = db.rawQuery("SELECT MAX(u.id)+1 FROM users u;", null);
         cursor.moveToFirst();
         int id = cursor.getInt(0);
         cursor.close();
         return id;
+    }
+
+    public void modifyMainDoorPw (int password) {
+        String stringNewPw = Integer.toString(password);
+        db.execSQL("UPDATE doors\n" +
+                "  SET password = " + stringNewPw + "\n" +
+                "  WHERE id = 0");
     }
 
 }

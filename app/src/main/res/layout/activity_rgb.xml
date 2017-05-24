@@ -11,13 +11,6 @@
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay"
         android:id="@+id/appBarLayout">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
     </android.support.design.widget.AppBarLayout>
 
     <android.support.design.widget.FloatingActionButton
@@ -32,19 +25,16 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="20dp" />
-    <SeekBar
+    <Switch
+        android:id="@+id/sw_RGB1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/seekBar"
-        android:max="255"
-        android:progress="1"
-        android:indeterminate="false"
-        android:layout_alignBottom="@+id/lampbutton"
-        android:layout_toEndOf="@+id/lampbutton"
-        android:layout_marginStart="32dp"
-        android:layout_marginBottom="18dp" />
+        android:layout_alignTop="@+id/lampbutton1"
+        android:layout_alignStart="@+id/sw_RGB2"
+        android:layout_marginTop="16dp" />
+
     <android.support.design.widget.CheckableImageButton
-        android:id="@+id/lampbutton"
+        android:id="@+id/lampbutton1"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_weight="1"
@@ -54,5 +44,25 @@
         android:layout_below="@+id/appBarLayout"
         android:layout_alignParentStart="true"
         android:layout_marginStart="11dp" />
+
+    <Switch
+        android:id="@+id/sw_RGB2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="29dp"
+        android:layout_marginBottom="15dp"
+        android:layout_alignBottom="@+id/lampbutton2"
+        android:layout_toEndOf="@+id/lampbutton2" />
+
+    <android.support.design.widget.CheckableImageButton
+        android:id="@+id/lampbutton2"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_weight="1"
+        android:background="@drawable/lamp_11"
+        android:backgroundTint="@color/colorAccent"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/lampbutton1"
+        android:layout_alignStart="@+id/lampbutton1" />
 
 </android.widget.RelativeLayout>
