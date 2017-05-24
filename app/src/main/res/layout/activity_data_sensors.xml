@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@drawable/refresh"
-        android:id="@+id/btnConect"/>
+    android:layout_width="50dp"
+    android:layout_height="50dp"
+    android:background="@drawable/refresh"
+    android:id="@+id/btnConect"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -61,6 +61,58 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
+
+    </LinearLayout>
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/refresh"
+        android:id="@+id/btnConect2"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/temperature"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Temperatura: "
+            android:textSize="22sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="prueba..."
+            android:textSize="22sp"
+            android:id="@+id/tempSensor2"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/smartfan"/>
+
+        <Switch
+            android:id="@+id/sw_smartFAN2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -71,22 +123,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SmartTemperature: "/>
 
-        <EditText
 
-            android:id="@+id/editsmart"
-            android:layout_width="230dp"
-            android:layout_height="wrap_content"
-            android:inputType="textAutoComplete|number" />
-
-</LinearLayout>
 </LinearLayout>

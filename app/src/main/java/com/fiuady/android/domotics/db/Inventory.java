@@ -34,6 +34,7 @@ public final class Inventory {
         }
     }
 
+
     private InventoryHelper inventoryHelper;
     private SQLiteDatabase db;
     public Inventory(Context context){

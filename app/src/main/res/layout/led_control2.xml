@@ -12,6 +12,40 @@
         android:layout_toEndOf="@+id/onled"
         android:layout_marginStart="77dp" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/AppTheme"
+        android:text="ENTRADA"
+        android:id="@+id/textView4"
+        android:layout_above="@+id/imageView2"
+        android:layout_toEndOf="@+id/onled" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/AppTheme"
+        android:text="PISCINA"
+        android:id="@+id/textView6"
+        android:layout_alignTop="@+id/offled2"
+        android:layout_toEndOf="@+id/offled2" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/AppTheme"
+        android:text="HABITACION 1"
+        android:id="@+id/textView7"
+        android:layout_alignTop="@+id/offled"
+        android:layout_toEndOf="@+id/offled" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/AppTheme"
+        android:text="HABITACION 2"
+        android:id="@+id/textView8"
+        android:layout_above="@+id/sw_led4"
+        android:layout_toEndOf="@+id/onled2" />
+
+
     <SeekBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -90,7 +124,8 @@
         android:background="@drawable/lamp_11"
         android:id="@+id/onled"
         android:layout_below="@+id/textView2"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="48dp" />
     <ImageButton
         android:layout_width="20dp"
         android:layout_height="20dp"
@@ -121,9 +156,9 @@
         android:layout_height="50dp"
         android:background="@drawable/lamp_11"
         android:id="@+id/offled2"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="39dp"
         android:layout_below="@+id/onled"
-        android:layout_alignParentStart="true" />
+        android:layout_toEndOf="@+id/textView3" />
     <ImageButton
         android:layout_width="50dp"
         android:layout_height="50dp"

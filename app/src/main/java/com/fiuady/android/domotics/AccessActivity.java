@@ -61,8 +61,7 @@ public class AccessActivity extends FragmentActivity {
         //Aqui pondrán la dirección del modulo bluetooth que estan usando,
         //La pueden obtener mediante la clase devicelist
         address = "20:17:01:03:42:80";
-
-        //new ConnectBT().execute(); //Call the class to connect
+        new ConnectBT().execute(); //Call the class to connect
 
         //btnNewUser = (ImageButton)findViewById(R.id.btnProfiles);
         //btnNewUser.setOnClickListener(new View.OnClickListener() {
@@ -213,7 +212,7 @@ public class AccessActivity extends FragmentActivity {
 
         @Override
         protected void onProgressUpdate(String... values) {
-            appendMessageText(values[0] + "°C");
+            appendMessageText(values[0] );
         }
     }
 
@@ -829,12 +828,12 @@ public class AccessActivity extends FragmentActivity {
 
         }
     }
-    public void turnonsmart(String value)
+    public void turnonsmart()
     {
         try
         {
             String value2;
-            value2="SMARTON"+value;
+            value2="SMARTON";
             btSocket.getOutputStream().write(value2.getBytes());
 
 
@@ -844,12 +843,12 @@ public class AccessActivity extends FragmentActivity {
 
         }
     }
-    public void turnoffsmart(String value)
+    public void turnoffsmart()
     {
         try
         {
             String value2;
-            value2="SMARTOFF"+value;
+            value2="SMARTOFF";
             btSocket.getOutputStream().write(value2.getBytes());
 
 
