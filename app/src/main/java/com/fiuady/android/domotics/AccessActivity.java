@@ -26,7 +26,7 @@ import java.util.UUID;
 
 public class AccessActivity extends FragmentActivity {
 //
-    ImageButton btnNewUser;
+    ImageButton btnSettings;
     ImageButton btnLed;
     ImageButton btnDataSensor;
     ImageButton btnAlarm;
@@ -68,6 +68,17 @@ public class AccessActivity extends FragmentActivity {
         //        transaction.commit();
         //    }
         //});
+
+        btnSettings = (ImageButton) findViewById(R.id.settings);
+        btnSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                android.app.FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.contenedor, fragment5);
+                transaction.commit();
+            }
+        });
 
         btnLed = (ImageButton) findViewById(R.id.btnLed);
         btnLed.setOnClickListener(new View.OnClickListener() {

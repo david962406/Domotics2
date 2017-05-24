@@ -22,10 +22,11 @@ CREATE TABLE [device](
 CREATE TABLE [configuration](
     [id] INTEGER PRIMARY KEY NOT NULL UNIQUE,
     [user_id] INTEGER NOT NULL REFERENCES users([id]),
-    [device_id] INTEGER NOT NULL REFERENCES device([id]));
+    [description] TEXT NOT NULL);
 
 CREATE TABLE [device_configuration](
     [device_id] INTEGER NOT NULL REFERENCES device([id]),
     [sensor_active] BOOLEAN,
     [data] INTEGER,
-    [device_active] BOOLEAN NOT NULL);
+    [device_active] BOOLEAN NOT NULL,
+    [id_configuration] INTEGER NOT NULL REFERENCES configuration([id]));

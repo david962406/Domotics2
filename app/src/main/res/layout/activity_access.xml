@@ -52,7 +52,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:background="@drawable/configuration"
-                android:id="@+id/newuser"/>
+                android:id="@+id/settings"/>
 
         </LinearLayout>
 

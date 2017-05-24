@@ -77,5 +77,52 @@ public final class Inventory {
         return id+1;
     }
 
+    public void newProfile (int data[], int rgb1[], int rgb2[],  String profile, int userid) {
+        //Insertando datos en sql
+
+        //Recuperando id..
+        Cursor cursor = db.rawQuery("SELECT MAX (id) + 1\n" +
+                "FROM configuration", null);
+        cursor.moveToFirst();
+        int id = cursor.getInt(0);
+        cursor.close();
+
+        //configuration
+        db.execSQL("INSERT INTO configuration (id, user_id, description) VALUES (" + id  + ", " + userid + ", '" + profile + "');");
+        //device_configuration
+        //--Cuartos--
+
+        //Ventilador cuarto 1
+        db.execSQL("INSERT INTO device_configuration (device_id, sensor_active, data, device_active, id_configuration) VALUES (2, " + data[1] + ", NULL, " + data[0] + ", " + id + ");");
+        //Rgb cuarto 1
+        String rgb = Integer.toString(rgb1[0]) + "-" + Integer.toString(rgb1[1]) + "-" + Integer.toString(rgb1[2]);
+        db.execSQL("INSERT INTO device_configuration (device_id, sensor_active, data, device_active, id_configuration) VALUES (6, NULL, "   + rgb + ", " + data[2] + ", " + id + ");");
+        //Ventilador cuarto 2
+        db.execSQL("INSERT INTO device_configuration (device_id, sensor_active, data, device_active, id_configuration) VALUES (3, " + data[4] + ", NULL, " + data[3] + ", " + id + ");");
+        //Rgb cuarto 2
+        rgb = Integer.toString(rgb2[0]) + "-" + Integer.toString(rgb2[1]) + "-" + Integer.toString(rgb2[2]);
+        db.execSQL("INSERT INTO device_configuration (device_id, sensor_active, data, device_active, id_configuration) VALUES (7, NULL, "   + rgb + ", " + data[5] + ", " + id + ");");
+
+        //--Exteriores--
+        //Led externo
+        db.execSQL("INSERT INTO device_configuration (device_id, sensor_active, data, device_active, id_configuration) VALUES (0, " + data[7] + ", " + data[8] + ", " + data[6] + ", " + id + ");");
+        //Led piscina
+        db.execSQL("INSERT INTO device_configuration (device_id, sensor_active, data, device_active, id_configuration) VALUES (1, " + data[10] + ", " + data[11] + ", " + data[9] + ", " + id + ");");
+
+        //--Alarmas--
+        //Movimiento
+        db.execSQL("INSERT INTO device_configuration (device_id, sensor_active, data, device_active, id_configuration) VALUES (9, NULL, NULL , " + data[12] + ", " + id + ");");
+        //Puerta 1
+        db.execSQL("INSERT INTO device_configuration (device_id, sensor_active, data, device_active, id_configuration) VALUES (10, " + data[13] + ", NULL , 1, " + id + ");");
+        //Puerta 2
+        db.execSQL("INSERT INTO device_configuration (device_id, sensor_active, data, device_active, id_configuration) VALUES (11, " + data[14] + ", NULL , 1, " + id + ");");
+        //Ventana 1
+        db.execSQL("INSERT INTO device_configuration (device_id, sensor_active, data, device_active, id_configuration) VALUES (12, " + data[15] + ", NULL , 1, " + id + ");");
+        //Ventana 2
+        db.execSQL("INSERT INTO device_configuration (device_id, sensor_active, data, device_active, id_configuration) VALUES (13, " + data[16] + ", NULL , 1, " + id + ");");
+        //Ventana 3
+        db.execSQL("INSERT INTO device_configuration (device_id, sensor_active, data, device_active, id_configuration) VALUES (14, " + data[17] + ", NULL , 1, " + id + ");");
+    }
+
 }
 
