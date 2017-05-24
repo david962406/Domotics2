@@ -45,7 +45,7 @@
             <ImageButton
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="@drawable/alarm"
+            android:background="@drawable/security"
             android:id="@+id/btnAlarms"/>
 
             <ImageButton
