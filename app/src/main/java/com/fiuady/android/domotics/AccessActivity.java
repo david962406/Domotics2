@@ -202,6 +202,7 @@ public class AccessActivity extends FragmentActivity {
 
     private void appendMessageText(String text) {
         tempData = text;
+        AlarmSensorsData = text;
     }
 
     public String getDataTempSensor () {
@@ -428,7 +429,7 @@ public class AccessActivity extends FragmentActivity {
                 // msg("Error");
             }
         }
-        return tempData;
+        return AlarmSensorsData;
     }
 
 }

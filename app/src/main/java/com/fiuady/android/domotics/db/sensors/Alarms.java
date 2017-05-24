@@ -53,7 +53,7 @@ public class Alarms extends android.app.Fragment {
 
         final AccessActivity activity = (AccessActivity)getActivity();
 
-        dataPIR = (TextView)view.findViewById(R.id.sw_PIR);
+
         GlobalAlarm = (Switch)view.findViewById(R.id.sw_alarm);
         SWPIR = (Switch)view.findViewById(R.id.sw_PIR);
         SW1 = (Switch)view.findViewById(R.id.sw_SW1);
@@ -61,6 +61,8 @@ public class Alarms extends android.app.Fragment {
         SW3 = (Switch)view.findViewById(R.id.sw_SW3);
         SW4 = (Switch)view.findViewById(R.id.sw_SW4);
         SW5 = (Switch)view.findViewById(R.id.sw_SW5);
+
+        dataPIR = (TextView)view.findViewById(R.id.txt_PIRState);
         dataSW1 = (TextView)view.findViewById(R.id.txt_StateSW1);
         dataSW2 = (TextView)view.findViewById(R.id.txt_StateSW2);
         dataSW3 = (TextView)view.findViewById(R.id.txt_StateSW3);
