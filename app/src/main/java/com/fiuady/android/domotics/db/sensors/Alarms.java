@@ -16,6 +16,11 @@ import com.fiuady.android.domotics.R;
 
 public class Alarms extends android.app.Fragment {
     TextView dataPIR;
+    TextView dataSW1;
+    TextView dataSW2;
+    TextView dataSW3;
+    TextView dataSW4;
+    TextView dataSW5;
     Switch GlobalAlarm;
     Switch SWPIR;
     Switch SW1;
@@ -25,7 +30,7 @@ public class Alarms extends android.app.Fragment {
     Switch SW5;
 
     Button Save;
-    Button Cancel;
+    Button UpdateStatus;
 
     boolean isGlobalAlarmChecked;
     boolean isSWPIRChecked;
@@ -34,6 +39,8 @@ public class Alarms extends android.app.Fragment {
     boolean isSW3Checked;
     boolean isSW4Checked;
     boolean isSW5Checked;
+
+    String AlarmSensorsStatus;
 
     public Alarms() {
 
@@ -46,7 +53,7 @@ public class Alarms extends android.app.Fragment {
 
         final AccessActivity activity = (AccessActivity)getActivity();
 
-        dataPIR = (TextView)view.findViewById(R.id.sw_PIR);
+
         GlobalAlarm = (Switch)view.findViewById(R.id.sw_alarm);
         SWPIR = (Switch)view.findViewById(R.id.sw_PIR);
         SW1 = (Switch)view.findViewById(R.id.sw_SW1);
@@ -55,22 +62,77 @@ public class Alarms extends android.app.Fragment {
         SW4 = (Switch)view.findViewById(R.id.sw_SW4);
         SW5 = (Switch)view.findViewById(R.id.sw_SW5);
 
+        dataPIR = (TextView)view.findViewById(R.id.txt_PIRState);
+        dataSW1 = (TextView)view.findViewById(R.id.txt_StateSW1);
+        dataSW2 = (TextView)view.findViewById(R.id.txt_StateSW2);
+        dataSW3 = (TextView)view.findViewById(R.id.txt_StateSW3);
+        dataSW4 = (TextView)view.findViewById(R.id.txt_StateSW4);
+        dataSW5 = (TextView)view.findViewById(R.id.txt_StateSW5);
+
+
         Save = (Button)view.findViewById(R.id.btn_SaveConf);
-        Cancel = (Button)view.findViewById(R.id.btn_CancelConf);
+        UpdateStatus = (Button)view.findViewById(R.id.btn_UpdateStatus);
 
         Save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Enviar los Strings para los casos al arduino
-                activity.AlarmActivatePIR(isSWPIRChecked);
-                activity.AlarmActivateSW1(isSW1Checked);
-                activity.AlarmActivateSW2(isSW2Checked);
-                activity.AlarmActivateSW3(isSW3Checked);
-                activity.AlarmActivateSW4(isSW4Checked);
-                activity.AlarmActivateSW5(isSW5Checked);
+                activity.AlarmMSG(isSWPIRChecked, isSW1Checked, isSW2Checked, isSW3Checked,
+                        isSW4Checked, isSW5Checked);
             }
         });
 
+        UpdateStatus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int pir_sw;
+                int sw1;
+                int sw2;
+                int sw3;
+                int sw4;
+                int sw5;
+
+                AlarmSensorsStatus = activity.getDataAlarmSensors().toString();
+                String[] separated1 = AlarmSensorsStatus.split("-");
+                pir_sw = Integer.valueOf(separated1[0]);
+                sw1 = Integer.valueOf(separated1[1]);
+                sw2 = Integer.valueOf(separated1[2]);
+                sw3 = Integer.valueOf(separated1[3]);
+                sw4 = Integer.valueOf(separated1[4]);
+                sw5 = Integer.valueOf(separated1[5]);
+
+                if(pir_sw == 1){
+                    dataPIR.setText("Movimiento");
+                }else{
+                    dataPIR.setText("Sin Movimiento");
+                }
+                if(sw1 == 1){
+                    dataSW1.setText("Abierto");
+                }else {
+                    dataSW1.setText("Cerrado");
+                }
+                if(sw2 == 1){
+                    dataSW2.setText("Abierto");
+                }else {
+                    dataSW2.setText("Cerrado");
+                }
+                if(sw3 == 1){
+                    dataSW3.setText("Abierto");
+                }else {
+                    dataSW3.setText("Cerrado");
+                }
+                if(sw4 == 1){
+                    dataSW4.setText("Abierto");
+                }else {
+                    dataSW4.setText("Cerrado");
+                }
+                if(sw5 == 1){
+                    dataSW5.setText("Abierto");
+                }else {
+                    dataSW5.setText("Cerrado");
+                }
+            }
+        });
 
         GlobalAlarm.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
