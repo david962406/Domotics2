@@ -25,6 +25,7 @@ public class prueba extends Fragment{
         dataTemp = (TextView)view.findViewById(R.id.tempSensor);
         final AccessActivity activity = (AccessActivity)getActivity();
         dataTemp.setText(activity.getDataTempSensor());
+        dataTemp.setText("");
         btnUpDate = (ImageButton) view.findViewById(R.id.btnConect);
         btnUpDate.setOnClickListener(new View.OnClickListener() {
             @Override

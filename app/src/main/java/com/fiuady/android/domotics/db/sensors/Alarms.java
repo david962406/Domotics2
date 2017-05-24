@@ -21,6 +21,7 @@ public class Alarms extends android.app.Fragment {
     TextView dataSW3;
     TextView dataSW4;
     TextView dataSW5;
+    TextView dataPIRinv;
     Switch GlobalAlarm;
     Switch SWPIR;
     Switch SW1;
@@ -58,6 +59,7 @@ public class Alarms extends android.app.Fragment {
         SW5 = (Switch)view.findViewById(R.id.sw_SW5);
 
         dataPIR = (TextView)view.findViewById(R.id.txt_PIRState);
+        dataPIRinv = (TextView)view.findViewById(R.id.txt_StatePIR);
         dataSW1 = (TextView)view.findViewById(R.id.txt_StateSW1);
         dataSW2 = (TextView)view.findViewById(R.id.txt_StateSW2);
         dataSW3 = (TextView)view.findViewById(R.id.txt_StateSW3);
@@ -65,8 +67,8 @@ public class Alarms extends android.app.Fragment {
         dataSW5 = (TextView)view.findViewById(R.id.txt_StateSW5);
 
         final AccessActivity activity = (AccessActivity)getActivity();
-        dataPIR.setText(activity.getDataAlarmSensor());
-        dataPIR.setText("");
+        dataPIRinv.setText(activity.getDataAlarmSensor());
+        dataPIRinv.setText("");
         String MSGAlarm = dataPIR.getText().toString();
         Log.d("FFFF", MSGAlarm);
 
@@ -86,7 +88,49 @@ public class Alarms extends android.app.Fragment {
             String AlarmSensorsStatus;
             @Override
             public void onClick(View v) {
-                dataPIR.setText(activity.getDataAlarmSensor());
+                dataPIRinv.setText(activity.getDataAlarmSensor());
+                String ClaveMSG = dataPIRinv.getText().toString();
+                int sw_pir;
+                int sw1;
+                int sw2;
+                int sw3;
+                int sw4;
+                int sw5;
+
+                String[] separated1 = ClaveMSG.split("-");
+                sw_pir = Integer.valueOf(separated1[0]);
+                sw1 = Integer.valueOf(separated1[1]);
+                sw2 = Integer.valueOf(separated1[2]);
+                sw3 = Integer.valueOf(separated1[3]);
+                sw4 = Integer.valueOf(separated1[4]);
+                sw5 = Integer.valueOf(separated1[5]);
+
+                if(sw_pir == 1){
+                    dataPIR.setText("Activado");
+                }else{
+                    dataPIR.setText("Desactivado");
+                }
+                if(sw1 == 1){
+                    dataSW1.setText("Open");
+                }else {dataSW1.setText("Close");
+                }
+                if(sw2 == 1){
+                    dataSW2.setText("Open");
+                }else {dataSW2.setText("Close");
+                }
+                if(sw3 == 1){
+                    dataSW3.setText("Close");
+                }else {dataSW3.setText("Open");
+                }
+                if(sw4 == 1){
+                    dataSW4.setText("Close");
+                }else {dataSW4.setText("Open");
+                }
+                if(sw5 == 1){
+                    dataSW5.setText("Close");
+                }else {dataSW5.setText("Open");
+                }
+
             }
         });
 
