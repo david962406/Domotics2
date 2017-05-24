@@ -52,11 +52,15 @@ public class AccessActivity extends FragmentActivity {
     final NewProfile fragment5 = new NewProfile();
     String tempData;
     String AlarmSensorsData;
+    int currentuserid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_access);
+
+        currentuserid = getIntent().getExtras().getInt("passw");
+        Log.d("userid", "1");
 
         //Aqui pondrán la dirección del modulo bluetooth que estan usando,
         //La pueden obtener mediante la clase devicelist

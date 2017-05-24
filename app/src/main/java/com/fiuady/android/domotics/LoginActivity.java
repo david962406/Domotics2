@@ -19,6 +19,7 @@ public class LoginActivity extends AppCompatActivity {
     private AutoCompleteTextView txtUserName;
     private EditText txtPassword;
     private boolean Access = false;
+    public static final String EXTRA_CURRENTUSERID = "com.fiuady.android.domotics.currentuserid";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,9 +55,9 @@ public class LoginActivity extends AppCompatActivity {
                 }*/
                 Intent i = new Intent(LoginActivity.this, AccessActivity.class);
                 startActivity(i);
+                i.putExtra("passw", currentUserId());
             }
         });
-
 
         //btnSignIn.setOnClickListener(new OnClickListener() {
         //    @Override
@@ -68,6 +69,13 @@ public class LoginActivity extends AppCompatActivity {
         //});
 
 
+    }
+
+    public int currentUserId (){
+        Integer id;
+        String user_name = txtUserName.getText().toString();
+        id = inventory.getCurrentUserId(user_name);
+        return id;
     }
 
 }
