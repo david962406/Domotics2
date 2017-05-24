@@ -58,16 +58,16 @@ public class AccessActivity extends FragmentActivity {
 
         //new ConnectBT().execute(); //Call the class to connect
 
-        btnNewUser = (ImageButton)findViewById(R.id.btnProfiles);
-        btnNewUser.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                android.app.FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.contenedor, fragment5);
-                transaction.commit();
-            }
-        });
+        //btnNewUser = (ImageButton)findViewById(R.id.btnProfiles);
+        //btnNewUser.setOnClickListener(new View.OnClickListener() {
+        //    @Override
+        //    public void onClick(View v) {
+        //        android.app.FragmentManager fragmentManager = getFragmentManager();
+        //        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        //        transaction.replace(R.id.contenedor, fragment5);
+        //        transaction.commit();
+        //    }
+        //});
 
         btnLed = (ImageButton) findViewById(R.id.btnLed);
         btnLed.setOnClickListener(new View.OnClickListener() {

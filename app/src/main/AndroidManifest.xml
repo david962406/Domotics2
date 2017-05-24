@@ -39,7 +39,8 @@
         <activity android:name=".db.sensors.ledControl" />
         <activity android:name=".db.sensors.RGBActivity" />
         <activity android:name=".db.sensors.Alarms" />
-        <activity android:name=".db.sensors.DoorActivity"></activity>
+        <activity android:name=".db.sensors.DoorActivity" />
+        <activity android:name=".InfoActivity"></activity>
     </application>
 
 </manifest>

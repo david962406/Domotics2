@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.CursorWrapper;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.fiuady.android.domotics.db.Tables.UserData;
 import com.fiuady.android.domotics.db.Tables.Users;
@@ -56,16 +57,24 @@ public final class Inventory {
     }
 
     public void newUser (int id, String firstName, String lastName, String userName, String password) {
-        db.execSQL("INSERT INTO users  (id, password, admin, user_name, last_configuration) VALUES (" + id + ", '" + password + "', 0, '" + userName + "', NULL);");
-        db.execSQL("INSERT INTO user_data  (user_id, first_name, last_name) VALUES (" + id + ", '" + firstName + "', '" + lastName + "');");
+        db.execSQL("INSERT INTO users  (id, password, admin, user_name, last_configuration) VALUES (" + id + ", '" + password +
+                "', 0, '" + userName + "', NULL);");
+        db.execSQL("INSERT INTO user_data  (user_id, first_name, last_name) " +
+                "VALUES (" + id + ", '" + firstName + "', '" + lastName + "');");
+        Log.d("prueba", "1");
     }
 
     public int getLastUserId(){
-        Cursor cursor = db.rawQuery("SELECT MAX(u.id)+1 FROM users u;", null);
+        Log.d("prueba", "2");
+        Cursor cursor = db.rawQuery("SELECT MAX(id) FROM users", null);
+        Log.d("prueba", "2.0");
         cursor.moveToFirst();
+        Log.d("prueba", "2.2");
         int id = cursor.getInt(0);
+        Log.d("prueba", "2.3");
         cursor.close();
-        return id;
+        Log.d("prueba", "2.1");
+        return id+1;
     }
 
 }
