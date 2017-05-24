@@ -407,6 +407,7 @@ public class AccessActivity extends FragmentActivity {
             {
                 btSocket.getOutputStream().write("UPDATEtemperature".toString().getBytes());
                 btSocket.getOutputStream().flush();
+                btSocket.getOutputStream().write(":".toString().getBytes());
 
             }
             catch (IOException e)
@@ -424,6 +425,7 @@ public class AccessActivity extends FragmentActivity {
             {
                 btSocket.getOutputStream().write("TF1".toString().getBytes());
                 btSocket.getOutputStream().flush();
+                btSocket.getOutputStream().write(":".toString().getBytes());
 
 
 
@@ -442,6 +444,7 @@ public class AccessActivity extends FragmentActivity {
             {
                 btSocket.getOutputStream().write("TF2".toString().getBytes());
                 btSocket.getOutputStream().flush();
+                btSocket.getOutputStream().write(":".toString().getBytes());
 
 
 
@@ -459,6 +462,7 @@ public class AccessActivity extends FragmentActivity {
         {
             btSocket.getOutputStream().write(code.getBytes());
             btSocket.getOutputStream().flush();
+            btSocket.getOutputStream().write(":".toString().getBytes());
 
 
 
@@ -489,6 +493,7 @@ public class AccessActivity extends FragmentActivity {
                 btSocket.getOutputStream().write("TO1".toString().getBytes());
                 Log.d("dd","TO".toString().getBytes().toString());
                 btSocket.getOutputStream().flush();
+                btSocket.getOutputStream().write(":".toString().getBytes());
 
 
             }
@@ -509,6 +514,7 @@ public class AccessActivity extends FragmentActivity {
                 btSocket.getOutputStream().write("TO2".toString().getBytes());
                 Log.d("dd","TO".toString().getBytes().toString());
                 btSocket.getOutputStream().flush();
+                btSocket.getOutputStream().write(":".toString().getBytes());
 
 
             }
@@ -529,6 +535,7 @@ public class AccessActivity extends FragmentActivity {
                 btSocket.getOutputStream().write("OPENDOOR1".toString().getBytes());
                 Log.d("dd","TO".toString().getBytes().toString());
                 btSocket.getOutputStream().flush();
+                btSocket.getOutputStream().write(":".toString().getBytes());
 
 
             }
@@ -549,6 +556,7 @@ public class AccessActivity extends FragmentActivity {
                 btSocket.getOutputStream().write("CLOSEDOOR1".toString().getBytes());
                 Log.d("dd","TO".toString().getBytes().toString());
                 btSocket.getOutputStream().flush();
+                btSocket.getOutputStream().write(":".toString().getBytes());
 
 
             }
@@ -569,6 +577,7 @@ public class AccessActivity extends FragmentActivity {
                 btSocket.getOutputStream().write("OPENDOOR2".toString().getBytes());
                 Log.d("dd","TO".toString().getBytes().toString());
                 btSocket.getOutputStream().flush();
+                btSocket.getOutputStream().write(":".toString().getBytes());
 
 
             }
@@ -589,6 +598,7 @@ public class AccessActivity extends FragmentActivity {
                 btSocket.getOutputStream().write("CLOSEDOOR2".toString().getBytes());
                 Log.d("dd","TO".toString().getBytes().toString());
                 btSocket.getOutputStream().flush();
+                btSocket.getOutputStream().write(":".toString().getBytes());
 
 
             }
@@ -609,7 +619,8 @@ public class AccessActivity extends FragmentActivity {
             value2="LUM"+value;
             Log.d("RGB",value2);
             btSocket.getOutputStream().write(value2.getBytes());
-           btSocket.getOutputStream().flush();
+            btSocket.getOutputStream().flush();
+            btSocket.getOutputStream().write(":".toString().getBytes());
 
 
         }
@@ -630,6 +641,7 @@ public class AccessActivity extends FragmentActivity {
             btSocket.getOutputStream().write(value2.getBytes());
             Log.d("123",value2);
             btSocket.getOutputStream().flush();
+            btSocket.getOutputStream().write(":".toString().getBytes());
 
         }
         catch (IOException e)
@@ -689,6 +701,7 @@ public class AccessActivity extends FragmentActivity {
         try {
             btSocket.getOutputStream().write(Clave.getBytes());
             btSocket.getOutputStream().flush();
+            btSocket.getOutputStream().write(":".toString().getBytes());
         }
 
         catch (Exception e) {
@@ -703,6 +716,7 @@ public class AccessActivity extends FragmentActivity {
             {
                 btSocket.getOutputStream().write("UPDATEAlarmSensors".toString().getBytes());
                 btSocket.getOutputStream().flush();
+                btSocket.getOutputStream().write(":".toString().getBytes());
 
             }
             catch (IOException e)
@@ -720,6 +734,8 @@ public class AccessActivity extends FragmentActivity {
             value2="RGB1ON";
             Log.d("RGB","mandando turn onn led");
             btSocket.getOutputStream().write(value2.getBytes());
+            btSocket.getOutputStream().flush();
+            btSocket.getOutputStream().write(":".toString().getBytes());
 
 
         }
@@ -736,6 +752,8 @@ public class AccessActivity extends FragmentActivity {
             value2="RGB1OFF";
             Log.d("RGB","mandando turn offled");
             btSocket.getOutputStream().write(value2.getBytes());
+            btSocket.getOutputStream().flush();
+            btSocket.getOutputStream().write(":".toString().getBytes());
 
 
         }
@@ -750,6 +768,8 @@ public class AccessActivity extends FragmentActivity {
             String value2;
             value2="RGB2ON";
             btSocket.getOutputStream().write(value2.getBytes());
+            btSocket.getOutputStream().flush();
+            btSocket.getOutputStream().write(":".toString().getBytes());
             Log.d("RGB","mandando turn onled2rgb");
 
         }
@@ -765,6 +785,8 @@ public class AccessActivity extends FragmentActivity {
             String value2;
             value2="RGB2OFF";
             btSocket.getOutputStream().write(value2.getBytes());
+            btSocket.getOutputStream().flush();
+            btSocket.getOutputStream().write(":".toString().getBytes());
 
 
         }
@@ -853,6 +875,8 @@ public class AccessActivity extends FragmentActivity {
                         String value2;
                         value2="RGB1D"+a+c+d;
                         btSocket.getOutputStream().write(value2.getBytes());
+                        btSocket.getOutputStream().flush();
+                        btSocket.getOutputStream().write(":".toString().getBytes());
 
 
                     }
@@ -880,6 +904,8 @@ public class AccessActivity extends FragmentActivity {
                         String value2;
                         value2="RGB1D"+rgb;
                         btSocket.getOutputStream().write(value2.getBytes());
+                        btSocket.getOutputStream().flush();
+                        btSocket.getOutputStream().write(":".toString().getBytes());
 
 
                     }
@@ -900,6 +926,8 @@ public class AccessActivity extends FragmentActivity {
             String value2;
             value2="RGB2D"+rgb;
             btSocket.getOutputStream().write(value2.getBytes());
+            btSocket.getOutputStream().flush();
+            btSocket.getOutputStream().write(":".toString().getBytes());
 
 
         }
@@ -994,6 +1022,8 @@ public class AccessActivity extends FragmentActivity {
                             String value2;
                             value2="RGB2D"+a+c+d;
                             btSocket.getOutputStream().write(value2.getBytes());
+                            btSocket.getOutputStream().flush();
+                            btSocket.getOutputStream().write(":".toString().getBytes());
 
 
                         }
@@ -1020,6 +1050,8 @@ public class AccessActivity extends FragmentActivity {
             String value2;
             value2="FAN1ON";
             btSocket.getOutputStream().write(value2.getBytes());
+            btSocket.getOutputStream().flush();
+            btSocket.getOutputStream().write(":".toString().getBytes());
 
 
         }
@@ -1035,6 +1067,8 @@ public class AccessActivity extends FragmentActivity {
             String value2;
             value2="FAN1OFF";
             btSocket.getOutputStream().write(value2.getBytes());
+            btSocket.getOutputStream().flush();
+            btSocket.getOutputStream().write(":".toString().getBytes());
 
 
         }
@@ -1050,6 +1084,8 @@ public class AccessActivity extends FragmentActivity {
             String value2;
             value2="FAN2ON";
             btSocket.getOutputStream().write(value2.getBytes());
+            btSocket.getOutputStream().flush();
+            btSocket.getOutputStream().write(":".toString().getBytes());
 
 
         }
@@ -1065,6 +1101,8 @@ public class AccessActivity extends FragmentActivity {
             String value2;
             value2="FAN2OFF";
             btSocket.getOutputStream().write(value2.getBytes());
+            btSocket.getOutputStream().flush();
+            btSocket.getOutputStream().write(":".toString().getBytes());
 
 
         }
@@ -1080,7 +1118,8 @@ public class AccessActivity extends FragmentActivity {
             String value2;
             value2="SMARTON";
             btSocket.getOutputStream().write(value2.getBytes());
-
+            btSocket.getOutputStream().flush();
+            btSocket.getOutputStream().write(":".toString().getBytes());
 
         }
         catch (IOException e)
@@ -1095,6 +1134,8 @@ public class AccessActivity extends FragmentActivity {
             String value2;
             value2="SMARTOFF";
             btSocket.getOutputStream().write(value2.getBytes());
+            btSocket.getOutputStream().flush();
+            btSocket.getOutputStream().write(":".toString().getBytes());
 
 
         }
@@ -1110,6 +1151,8 @@ public class AccessActivity extends FragmentActivity {
             String value2;
             value2="SMARTON2";
             btSocket.getOutputStream().write(value2.getBytes());
+            btSocket.getOutputStream().flush();
+            btSocket.getOutputStream().write(":".toString().getBytes());
 
 
         }
@@ -1125,6 +1168,8 @@ public class AccessActivity extends FragmentActivity {
             String value2;
             value2="SMARTOFF2";
             btSocket.getOutputStream().write(value2.getBytes());
+            btSocket.getOutputStream().flush();
+            btSocket.getOutputStream().write(":".toString().getBytes());
 
 
         }
