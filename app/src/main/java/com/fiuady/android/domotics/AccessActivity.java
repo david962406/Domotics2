@@ -66,7 +66,7 @@ public class AccessActivity extends FragmentActivity {
         //La pueden obtener mediante la clase devicelist
         address = "20:17:01:03:42:80";
 
-        //new ConnectBT().execute(); //Call the class to connect
+        new ConnectBT().execute(); //Call the class to connect
 
         btnNewUser = (ImageButton)findViewById(R.id.btnNewUser);
         btnNewUser.setOnClickListener(new View.OnClickListener() {
@@ -284,40 +284,50 @@ public class AccessActivity extends FragmentActivity {
             final View promptsView = li.inflate(R.layout.fragment_maindoorpw, null);
             final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(AccessActivity.this);
             alertDialogBuilder.setView(promptsView);
-
+            final EditText actualPIN = (EditText) promptsView.findViewById(R.id.editTextActualPIN);
+            final EditText newPIN = (EditText) promptsView.findViewById(R.id.editTextInsertNewPIN);
+            final EditText confirmPIN = (EditText) promptsView.findViewById(R.id.editTextConfirmNewPIN);
             final Button btnChangePIN = (Button) promptsView.findViewById(R.id.btn_ChangePin);
 
             btnChangePIN.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    LayoutInflater li2 = LayoutInflater.from(AccessActivity.this);
+                    View promptsView = li2.inflate(R.layout.fragment_changemaindoorpw, null);
                     final EditText actualPIN = (EditText) promptsView.findViewById(R.id.editTextActualPIN);
                     final EditText newPIN = (EditText) promptsView.findViewById(R.id.editTextInsertNewPIN);
                     final EditText confirmPIN = (EditText) promptsView.findViewById(R.id.editTextConfirmNewPIN);
-
-                    LayoutInflater li2 = LayoutInflater.from(AccessActivity.this);
-                    View promptsView = li2.inflate(R.layout.fragment_changemaindoorpw, null);
-                    final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(AccessActivity.this);
                     alertDialogBuilder.setView(promptsView);
                     alertDialogBuilder
                             .setCancelable(false)
                             .setPositiveButton("Guardar",
                                     new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog,int id) {
-                                        if (actualPIN.getText().toString().trim().length() != 0 &&
-                                                newPIN.getText().toString().trim().length() != 0 &&
-                                                confirmPIN.getText().toString().trim().length() != 0)
+                                        if (Integer.valueOf(actualPIN.getText().toString().length()) != null &&
+                                                Integer.valueOf(newPIN.getText().toString().trim().length()) != null &&
+                                                        Integer.valueOf(confirmPIN.getText().toString().trim().length()) != null)
                                         {
                                             if (inventory.getDoorPassword() == Integer.valueOf(actualPIN.getText().toString()))
                                             {
-                                                inventory.modifyMainDoorPw(Integer.valueOf(actualPIN.getText().toString()));
+                                                if (newPIN.getText().toString().trim().equals(confirmPIN.getText().toString().trim())) {
+                                                    inventory.modifyMainDoorPw(Integer.valueOf(newPIN.getText().toString()));
+                                                    Toast.makeText(AccessActivity.this, "PIN cambiado exitosamente!", Toast.LENGTH_SHORT).show();
+                                                }
+                                                else
+                                                {
+                                                    Toast.makeText(AccessActivity.this, "La nueva contraseña no coincide!", Toast.LENGTH_SHORT).show();
+                                                    dialog.dismiss();
+                                                }
                                             } else
                                             {
                                                 Toast.makeText(AccessActivity.this, "PIN incorrecto!", Toast.LENGTH_SHORT).show();
+                                                dialog.dismiss();
                                             }
                                         }
                                         else
                                         {
                                             Toast.makeText(AccessActivity.this, "Revise los campos!", Toast.LENGTH_SHORT).show();
+                                            dialog.dismiss();
                                         }
                                         }
                                     })
@@ -387,6 +397,7 @@ public class AccessActivity extends FragmentActivity {
         }
 
     }
+
     public void Closedoor1()
     {
         if (btSocket!=null)
