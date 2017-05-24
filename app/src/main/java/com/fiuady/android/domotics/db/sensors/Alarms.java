@@ -40,8 +40,6 @@ public class Alarms extends android.app.Fragment {
     boolean isSW4Checked;
     boolean isSW5Checked;
 
-    String AlarmSensorsStatus;
-
     public Alarms() {
 
     }
@@ -50,9 +48,6 @@ public class Alarms extends android.app.Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_alarms, container, false);
-
-        final AccessActivity activity = (AccessActivity)getActivity();
-
 
         GlobalAlarm = (Switch)view.findViewById(R.id.sw_alarm);
         SWPIR = (Switch)view.findViewById(R.id.sw_PIR);
@@ -69,6 +64,11 @@ public class Alarms extends android.app.Fragment {
         dataSW4 = (TextView)view.findViewById(R.id.txt_StateSW4);
         dataSW5 = (TextView)view.findViewById(R.id.txt_StateSW5);
 
+        final AccessActivity activity = (AccessActivity)getActivity();
+        dataPIR.setText(activity.getDataAlarmSensor());
+        dataPIR.setText("");
+        String MSGAlarm = dataPIR.getText().toString();
+        Log.d("FFFF", MSGAlarm);
 
         Save = (Button)view.findViewById(R.id.btn_SaveConf);
         UpdateStatus = (Button)view.findViewById(R.id.btn_UpdateStatus);
@@ -83,54 +83,10 @@ public class Alarms extends android.app.Fragment {
         });
 
         UpdateStatus.setOnClickListener(new View.OnClickListener() {
+            String AlarmSensorsStatus;
             @Override
             public void onClick(View v) {
-                int pir_sw;
-                int sw1;
-                int sw2;
-                int sw3;
-                int sw4;
-                int sw5;
-
-                AlarmSensorsStatus = activity.getDataAlarmSensors().toString();
-                String[] separated1 = AlarmSensorsStatus.split("-");
-                pir_sw = Integer.valueOf(separated1[0]);
-                sw1 = Integer.valueOf(separated1[1]);
-                sw2 = Integer.valueOf(separated1[2]);
-                sw3 = Integer.valueOf(separated1[3]);
-                sw4 = Integer.valueOf(separated1[4]);
-                sw5 = Integer.valueOf(separated1[5]);
-
-                if(pir_sw == 1){
-                    dataPIR.setText("Movimiento");
-                }else{
-                    dataPIR.setText("Sin Movimiento");
-                }
-                if(sw1 == 1){
-                    dataSW1.setText("Abierto");
-                }else {
-                    dataSW1.setText("Cerrado");
-                }
-                if(sw2 == 1){
-                    dataSW2.setText("Abierto");
-                }else {
-                    dataSW2.setText("Cerrado");
-                }
-                if(sw3 == 1){
-                    dataSW3.setText("Abierto");
-                }else {
-                    dataSW3.setText("Cerrado");
-                }
-                if(sw4 == 1){
-                    dataSW4.setText("Abierto");
-                }else {
-                    dataSW4.setText("Cerrado");
-                }
-                if(sw5 == 1){
-                    dataSW5.setText("Abierto");
-                }else {
-                    dataSW5.setText("Cerrado");
-                }
+                dataPIR.setText(activity.getDataAlarmSensor());
             }
         });
 

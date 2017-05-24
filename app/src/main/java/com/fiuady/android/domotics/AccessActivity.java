@@ -54,7 +54,7 @@ public class AccessActivity extends FragmentActivity {
 
         //Aqui pondrán la dirección del modulo bluetooth que estan usando,
         //La pueden obtener mediante la clase devicelist
-        address = "98:D3:31:50:31:4A";
+        address = "20:17:01:03:42:80";
 
         new ConnectBT().execute(); //Call the class to connect
 
@@ -68,6 +68,7 @@ public class AccessActivity extends FragmentActivity {
                 transaction.commit();
             }
         });
+        //negro izquierda
 
         btnLed = (ImageButton) findViewById(R.id.btnLed);
         btnLed.setOnClickListener(new View.OnClickListener() {
@@ -196,13 +197,13 @@ public class AccessActivity extends FragmentActivity {
 
         @Override
         protected void onProgressUpdate(String... values) {
-            appendMessageText(values[0] + "°C");
+            appendMessageText(values[0]);
         }
     }
 
     private void appendMessageText(String text) {
         tempData = text;
-        AlarmSensorsData = text;
+        Log.d("UUUU", "text: "+ text);
     }
 
     public String getDataTempSensor () {
@@ -211,6 +212,22 @@ public class AccessActivity extends FragmentActivity {
             try
             {
                 btSocket.getOutputStream().write("UPDATEtemperature".toString().getBytes());
+                btSocket.getOutputStream().flush();
+
+            }
+            catch (IOException e)
+            {
+                // msg("Error");
+            }
+        }
+        return tempData;
+    }
+    public String getDataAlarmSensor () {
+        if (btSocket!=null)
+        {
+            try
+            {
+                btSocket.getOutputStream().write("UPDATEAlarmSensors".toString().getBytes());
                 btSocket.getOutputStream().flush();
 
             }
@@ -414,22 +431,4 @@ public class AccessActivity extends FragmentActivity {
             }
         }
     }
-
-    public String getDataAlarmSensors () {
-        if (btSocket!=null)
-        {
-            try
-            {
-                btSocket.getOutputStream().write("UPDATEAlarmSensors".toString().getBytes());
-                btSocket.getOutputStream().flush();
-
-            }
-            catch (IOException e)
-            {
-                // msg("Error");
-            }
-        }
-        return AlarmSensorsData;
-    }
-
 }
