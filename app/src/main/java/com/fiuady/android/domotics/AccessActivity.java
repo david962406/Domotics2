@@ -221,6 +221,8 @@ public class AccessActivity extends FragmentActivity {
             }
         }
         return tempData;
+
+
     }
     public String getDataAlarmSensor () {
         if (btSocket!=null)

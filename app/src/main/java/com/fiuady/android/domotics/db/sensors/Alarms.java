@@ -90,6 +90,7 @@ public class Alarms extends android.app.Fragment {
             public void onClick(View v) {
                 dataPIRinv.setText(activity.getDataAlarmSensor());
                 String ClaveMSG = dataPIRinv.getText().toString();
+                Log.d("UUUU", ClaveMSG);
                 int sw_pir;
                 int sw1;
                 int sw2;
