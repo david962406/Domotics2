@@ -32,7 +32,7 @@ import java.util.UUID;
 
 public class AccessActivity extends FragmentActivity {
 //
-    ImageButton btnNewUser;
+    ImageButton btnSettings;
     ImageButton btnLed;
     ImageButton btnDataSensor;
     ImageButton btnAlarm;
@@ -51,6 +51,7 @@ public class AccessActivity extends FragmentActivity {
     final DoorActivity fragment4 = new DoorActivity();
     final NewProfile fragment5 = new NewProfile();
     String tempData;
+    String AlarmSensorsData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,10 +62,21 @@ public class AccessActivity extends FragmentActivity {
         //La pueden obtener mediante la clase devicelist
         address = "20:17:01:03:42:80";
 
-        new ConnectBT().execute(); //Call the class to connect
+        //new ConnectBT().execute(); //Call the class to connect
 
-        btnNewUser = (ImageButton)findViewById(R.id.btnNewUser);
-        btnNewUser.setOnClickListener(new View.OnClickListener() {
+        //btnNewUser = (ImageButton)findViewById(R.id.btnProfiles);
+        //btnNewUser.setOnClickListener(new View.OnClickListener() {
+        //    @Override
+        //    public void onClick(View v) {
+        //        android.app.FragmentManager fragmentManager = getFragmentManager();
+        //        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        //        transaction.replace(R.id.contenedor, fragment5);
+        //        transaction.commit();
+        //    }
+        //});
+
+        btnSettings = (ImageButton) findViewById(R.id.settings);
+        btnSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 android.app.FragmentManager fragmentManager = getFragmentManager();
@@ -207,6 +219,7 @@ public class AccessActivity extends FragmentActivity {
 
     private void appendMessageText(String text) {
         tempData = text;
+        AlarmSensorsData = text;
     }
 
     public String getDataTempSensor () {
@@ -433,17 +446,44 @@ public class AccessActivity extends FragmentActivity {
 
 
     }
-    public void AlarmActivatePIR(boolean isChecked) {
+    public void AlarmMSG(boolean PIR, boolean SW1, boolean SW2, boolean SW3, boolean SW4, boolean SW5) {
         if (btSocket!=null) {
             try {
-                if(isChecked){
-                    btSocket.getOutputStream().write("PIR".toString().getBytes());
-                    btSocket.getOutputStream().flush();
-                }else {
-                    btSocket.getOutputStream().write("NOTPIR".toString().getBytes());
-                    btSocket.getOutputStream().flush();
+
+                String Clave = "ALARM";
+                if(PIR){
+                    Clave = Clave + "1";
+                }else{
+                    Clave = Clave + "0";
+                }
+                if(SW1){
+                    Clave = Clave + "1";
+                }else{
+                    Clave = Clave + "0";
+                }
+                if(SW2){
+                    Clave = Clave + "1";
+                }else{
+                    Clave = Clave + "0";
+                }
+                if(SW3){
+                    Clave = Clave + "1";
+                }else{
+                    Clave = Clave + "0";
+                }
+                if(SW4){
+                    Clave = Clave + "1";
+                }else{
+                    Clave = Clave + "0";
+                }
+                if(SW5){
+                    Clave = Clave + "1";
+                }else{
+                    Clave = Clave + "0";
                 }
 
+                btSocket.getOutputStream().write(Clave.getBytes());
+                btSocket.getOutputStream().flush();
             }
             catch (IOException e)
             {
@@ -451,95 +491,22 @@ public class AccessActivity extends FragmentActivity {
             }
         }
     }
-    public void AlarmActivateSW1(boolean isChecked) {
-        if (btSocket!=null) {
-            try {
-                if(isChecked){
-                    btSocket.getOutputStream().write("SW1".toString().getBytes());
-                    btSocket.getOutputStream().flush();
-                }else {
-                    btSocket.getOutputStream().write("NOTSW1".toString().getBytes());
-                    btSocket.getOutputStream().flush();
-                }
+
+    public String getDataAlarmSensors () {
+        if (btSocket!=null)
+        {
+            try
+            {
+                btSocket.getOutputStream().write("UPDATEAlarmSensors".toString().getBytes());
+                btSocket.getOutputStream().flush();
 
             }
             catch (IOException e)
             {
-                //msg("Error");
+                // msg("Error");
             }
         }
-    }
-    public void AlarmActivateSW2(boolean isChecked) {
-        if (btSocket!=null) {
-            try {
-                if(isChecked){
-                    btSocket.getOutputStream().write("SW2".toString().getBytes());
-                    btSocket.getOutputStream().flush();
-                }else {
-                    btSocket.getOutputStream().write("NOTSW2".toString().getBytes());
-                    btSocket.getOutputStream().flush();
-                }
-
-            }
-            catch (IOException e)
-            {
-                //msg("Error");
-            }
-        }
-    }
-    public void AlarmActivateSW3(boolean isChecked) {
-        if (btSocket!=null) {
-            try {
-                if(isChecked){
-                    btSocket.getOutputStream().write("SW3".toString().getBytes());
-                    btSocket.getOutputStream().flush();
-                }else {
-                    btSocket.getOutputStream().write("NOTSW3".toString().getBytes());
-                    btSocket.getOutputStream().flush();
-                }
-
-            }
-            catch (IOException e)
-            {
-                //msg("Error");
-            }
-        }
-    }
-    public void AlarmActivateSW4(boolean isChecked) {
-        if (btSocket!=null) {
-            try {
-                if(isChecked){
-                    btSocket.getOutputStream().write("SW4".toString().getBytes());
-                    btSocket.getOutputStream().flush();
-                }else {
-                    btSocket.getOutputStream().write("NOTSW4".toString().getBytes());
-                    btSocket.getOutputStream().flush();
-                }
-
-            }
-            catch (IOException e)
-            {
-                //msg("Error");
-            }
-        }
-    }
-    public void AlarmActivateSW5(boolean isChecked) {
-        if (btSocket!=null) {
-            try {
-                if(isChecked){
-                    btSocket.getOutputStream().write("SW5".toString().getBytes());
-                    btSocket.getOutputStream().flush();
-                }else {
-                    btSocket.getOutputStream().write("NOTSW5".toString().getBytes());
-                    btSocket.getOutputStream().flush();
-                }
-
-            }
-            catch (IOException e)
-            {
-                //msg("Error");
-            }
-        }
+        return AlarmSensorsData;
     }
     public void turnOnrgb()
     {

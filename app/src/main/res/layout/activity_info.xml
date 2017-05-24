@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context="com.fiuady.android.domotics.InfoActivity">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/changeprofilebtn"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/changeprogfile"/>
+
+            <ImageButton
+                android:id="@+id/newprofilebtn"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/newprofile"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/changeuserpasswordbtn"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/userpassword"/>
+
+            <ImageButton
+                android:id="@+id/changedoorpasswordbtn"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/doorpassword"/>
+        </LinearLayout>
+</LinearLayout>

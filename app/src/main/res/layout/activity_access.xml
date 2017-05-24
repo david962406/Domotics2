@@ -16,25 +16,25 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-            <ImageButton
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:background="@drawable/newuser"
-                android:id="@+id/btnNewUser"/>
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <ImageButton
+                android:id="@+id/btnLed"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:background="@drawable/lightcontrol"
-                android:id="@+id/btnLed"/>
+                android:background="@drawable/lightcontrol" />
 
             <ImageButton
+                android:id="@+id/btnDoor"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:background="@drawable/rgb"
-                android:id="@+id/btnDoor"/>
+                android:background="@drawable/doors1" />
+            <ImageButton
+                android:id="@+id/dataSensors"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/sensor" />
         </LinearLayout>
 
         <LinearLayout
@@ -43,21 +43,17 @@
             android:orientation="horizontal"
             android:gravity="center">
             <ImageButton
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:background="@drawable/moreinfo"
-                android:id="@+id/btnBtConection"/>
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/alarm"
+            android:id="@+id/btnAlarms"/>
 
             <ImageButton
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:background="@drawable/sensor"
-                android:id="@+id/dataSensors"/>
-            <ImageButton
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:background="@drawable/alarm"
-                android:id="@+id/btnAlarms"/>
+                android:background="@drawable/configuration"
+                android:id="@+id/settings"/>
+
         </LinearLayout>
 
         <FrameLayout

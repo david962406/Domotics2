@@ -30,13 +30,13 @@
                 android:background="@drawable/move"/>
 
             <TextView
-                style="@style/AppTheme"
                 android:id="@+id/txt_PIRState"
+                style="@style/AppTheme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:padding="10dp"
-                android:text="ESTADO" />
+                android:text="---" />
         </LinearLayout>
     </LinearLayout>
 
@@ -75,8 +75,6 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-
-
 
     </LinearLayout>
 
@@ -175,22 +173,92 @@
                 android:id="@+id/sw_SW5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/txt_StatePIR"
+                style="@style/AppTheme"
+                android:layout_width="71dp"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:paddingLeft="10dp"
+                android:textAlignment="center"
+                android:text=""/>
+
+            <TextView
+                android:id="@+id/txt_StateSW1"
+                style="@style/AppTheme"
+                android:layout_width="71dp"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:paddingLeft="10dp"
+                android:textAlignment="center"
+                android:text="..."/>
+
+            <TextView
+                style="@style/AppTheme"
+                android:id="@+id/txt_StateSW2"
+                android:layout_width="71dp"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:paddingLeft="10dp"
+                android:textAlignment="center"
+                android:text="..."/>
+
+            <TextView
+                android:id="@+id/txt_StateSW3"
+                style="@style/AppTheme"
+                android:layout_width="71dp"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:paddingLeft="10dp"
+                android:textAlignment="center"
+                android:text="..."/>
+
+            <TextView
+                android:id="@+id/txt_StateSW4"
+                style="@style/AppTheme"
+                android:layout_width="71dp"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:paddingLeft="10dp"
+                android:textAlignment="center"
+                android:text="..."/>
+            <TextView
+                android:id="@+id/txt_StateSW5"
+                style="@style/AppTheme"
+                android:layout_width="71dp"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:paddingLeft="10dp"
+                android:textAlignment="center"
+                android:text="..."/>
+
         </LinearLayout>
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/btn_SaveConf"
-            android:text="Guardar"/>
-        <Button
-            android:id="@+id/btn_CancelConf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cancelar"/>
+            android:text="Guardar
+Configuración" />
+
+        <Button
+            android:id="@+id/btn_UpdateStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Actualizar Estado
+de los sensores" />
 
     </LinearLayout>
 
