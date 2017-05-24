@@ -7,44 +7,58 @@
     tools:context="com.fiuady.android.domotics.AccessActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="8dp">
 
-        <Button
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Registro de usuario nuevo"
-            android:id="@+id/btnNewUser"/>
+            android:orientation="horizontal"
+            android:gravity="center">
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/newuser"
+                android:id="@+id/btnNewUser"/>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Control de iluminación"
-            android:id="@+id/btnLed"/>
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/lightcontrol"
+                android:id="@+id/btnLed"/>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Control RGB"
-            android:id="@+id/btnLedRGB"/>
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/rgb"
+                android:id="@+id/btnDoor"/>
+        </LinearLayout>
 
-        <Button
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Conectar a modulo bluetooth"
-            android:id="@+id/btnBtConection"/>
+            android:orientation="horizontal"
+            android:gravity="center">
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/moreinfo"
+                android:id="@+id/btnBtConection"/>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Información de los sensores"
-            android:id="@+id/dataSensors"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Alarmas"
-            android:id="@+id/btnAlarms"/>
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/sensor"
+                android:id="@+id/dataSensors"/>
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/alarm"
+                android:id="@+id/btnAlarms"/>
+        </LinearLayout>
 
         <FrameLayout
             android:id="@+id/contenedor"

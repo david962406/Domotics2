@@ -5,16 +5,17 @@ import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.fiuady.android.domotics.db.NewProfile;
 import com.fiuady.android.domotics.db.sensors.Alarms;
+import com.fiuady.android.domotics.db.sensors.DoorActivity;
 import com.fiuady.android.domotics.db.sensors.ledcontrol2;
 import com.fiuady.android.domotics.db.sensors.prueba;
 
@@ -25,20 +26,24 @@ import java.util.UUID;
 
 public class AccessActivity extends FragmentActivity {
 //
-    Button btnNewUser;
-    Button btnLed;
-    Button btnDataSensor;
-    Button btnAlarm;
+    ImageButton btnNewUser;
+    ImageButton btnLed;
+    ImageButton btnDataSensor;
+    ImageButton btnAlarm;
+    ImageButton btnDoor;
 
     private ProgressDialog progress;
     String address = null;
     public static BluetoothSocket btSocket = null;
     BluetoothAdapter myBluetooth = null;
     private boolean isBtConnected = false;
+    //static final UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     static final UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     final prueba fragment1 = new prueba();
     final ledcontrol2 fragment2 = new ledcontrol2();
     final Alarms fragment3 = new Alarms();
+    final DoorActivity fragment4 = new DoorActivity();
+    final NewProfile fragment5 = new NewProfile();
     String tempData;
 
     @Override
@@ -48,20 +53,22 @@ public class AccessActivity extends FragmentActivity {
 
         //Aqui pondrán la dirección del modulo bluetooth que estan usando,
         //La pueden obtener mediante la clase devicelist
-        address = "20:17:01:03:42:80";
+        address = "98:D3:31:50:31:4A";
 
         new ConnectBT().execute(); //Call the class to connect
 
-        btnNewUser = (Button)findViewById(R.id.btnNewUser);
+        btnNewUser = (ImageButton)findViewById(R.id.btnNewUser);
         btnNewUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               Intent intent = new Intent(AccessActivity.this, SignInActivity.class);
-                startActivity(intent);
+                android.app.FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.contenedor, fragment5);
+                transaction.commit();
             }
         });
 
-        btnLed = (Button)findViewById(R.id.btnLed);
+        btnLed = (ImageButton) findViewById(R.id.btnLed);
         btnLed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,7 +82,7 @@ public class AccessActivity extends FragmentActivity {
             }
         });
 
-        btnDataSensor = (Button)findViewById(R.id.dataSensors);
+        btnDataSensor = (ImageButton) findViewById(R.id.dataSensors);
         btnDataSensor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,7 +94,7 @@ public class AccessActivity extends FragmentActivity {
             }
         });
 
-        btnAlarm = (Button)findViewById(R.id.btnAlarms);
+        btnAlarm = (ImageButton) findViewById(R.id.btnAlarms);
         btnAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,6 +102,17 @@ public class AccessActivity extends FragmentActivity {
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
                 transaction.replace(R.id.contenedor, fragment3);
                 transaction.commit();
+            }
+        });
+        btnDoor=(ImageButton) findViewById(R.id.btnDoor);
+        btnDoor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                android.app.FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.contenedor, fragment4);
+                transaction.commit();
+
             }
         });
     }
@@ -116,6 +134,7 @@ public class AccessActivity extends FragmentActivity {
             {
                 if (btSocket == null || !isBtConnected)
                 {
+                    myBluetooth = BluetoothAdapter.getDefaultAdapter();
                     myBluetooth = BluetoothAdapter.getDefaultAdapter();
                     BluetoothDevice dispositivo = myBluetooth.getRemoteDevice(address);//conectamos al dispositivo y chequeamos si esta disponible
                     btSocket = dispositivo.createInsecureRfcommSocketToServiceRecord(myUUID);
@@ -250,14 +269,96 @@ public class AccessActivity extends FragmentActivity {
 
 
     }
+    public void Opendoor1()
+    {
+        if (btSocket!=null)
+        {
+            try
+            {
+                btSocket.getOutputStream().write("OPENDOOR1".toString().getBytes());
+                Log.d("dd","TO".toString().getBytes().toString());
+                btSocket.getOutputStream().flush();
+
+
+            }
+            catch (IOException e)
+            {
+                //msg("Error");
+            }
+        }
+
+
+    }
+    public void Closedoor1()
+    {
+        if (btSocket!=null)
+        {
+            try
+            {
+                btSocket.getOutputStream().write("CLOSEDOOR1".toString().getBytes());
+                Log.d("dd","TO".toString().getBytes().toString());
+                btSocket.getOutputStream().flush();
+
+
+            }
+            catch (IOException e)
+            {
+                //msg("Error");
+            }
+        }
+
+
+    }
+    public void Opendoor2()
+    {
+        if (btSocket!=null)
+        {
+            try
+            {
+                btSocket.getOutputStream().write("OPENDOOR2".toString().getBytes());
+                Log.d("dd","TO".toString().getBytes().toString());
+                btSocket.getOutputStream().flush();
+
+
+            }
+            catch (IOException e)
+            {
+                //msg("Error");
+            }
+        }
+
+
+    }
+    public void Closedoor2()
+    {
+        if (btSocket!=null)
+        {
+            try
+            {
+                btSocket.getOutputStream().write("CLOSEDOOR2".toString().getBytes());
+                Log.d("dd","TO".toString().getBytes().toString());
+                btSocket.getOutputStream().flush();
+
+
+            }
+            catch (IOException e)
+            {
+                //msg("Error");
+            }
+        }
+
+
+    }
     public void lumchange(String value)
     {
 
         try
         {
-            btSocket.getOutputStream().write("".getBytes());
+            String value2;
+            value2="LUM"+value;
+            btSocket.getOutputStream().write(value2.getBytes());
 
-            btSocket.getOutputStream().write(value.getBytes());
+
         }
         catch (IOException e)
         {
@@ -266,7 +367,6 @@ public class AccessActivity extends FragmentActivity {
 
 
     }
-
     public void AlarmActivatePIR(boolean isChecked) {
         if (btSocket!=null) {
             try {
@@ -375,4 +475,5 @@ public class AccessActivity extends FragmentActivity {
             }
         }
     }
+
 }

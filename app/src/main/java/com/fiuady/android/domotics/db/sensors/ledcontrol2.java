@@ -6,7 +6,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -19,8 +19,8 @@ import com.fiuady.android.domotics.R;
 
 public class ledcontrol2 extends Fragment {
     private TextView dataTemp;
-    private Button on;
-    private Button off;
+    private ImageButton on;
+    private ImageButton off;
     private SeekBar lumcontrol;
     public ledcontrol2() {
 
@@ -32,8 +32,8 @@ public class ledcontrol2 extends Fragment {
        // dataTemp = (TextView)view.findViewById(R.id.tempSensor);
         final AccessActivity activity = (AccessActivity)getActivity();
         //dataTemp.setText(activity.getDataTempSensor());
-        on = (Button)view.findViewById(R.id.button2);
-        off = (Button)view.findViewById(R.id.button3);
+       on = (ImageButton)view.findViewById(R.id.button2);
+        off = (ImageButton)view.findViewById(R.id.button3);
         lumcontrol=(SeekBar)view.findViewById(R.id.seekBar);
         on.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,22 +50,22 @@ public class ledcontrol2 extends Fragment {
         lumcontrol.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if (fromUser==true)
-                {
+
+
                     activity.lumchange(String.valueOf(progress));
-                }
+
 
             }
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-                activity.lumchange(String.valueOf(seekBar.getProgress()));
+               // activity.lumchange(String.valueOf(seekBar.getProgress()));
 
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                activity.lumchange(String.valueOf(seekBar.getProgress()));
+               // activity.lumchange(String.valueOf(seekBar.getProgress()));
 
             }
         });
